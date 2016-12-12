@@ -10,26 +10,25 @@ import com.bmc.cloud.bsasimulator.resources.PrimaryResource;
 import com.bmc.cloud.bsasimulator.resources.Resource;
 import com.sun.net.httpserver.HttpServer;
 
+import static com.bmc.cloud.bsasimulator.internal.Constants.PORT_NUMBER;
+
 public class HttpRestServer implements RestServer{
-    final HttpServer server;
-	
+	final HttpServer server;
+
 	public HttpRestServer() throws IOException {
-		URI builder=UriBuilder.fromUri("http://localhost/").port(9000).build();
+		URI builder=UriBuilder.fromUri("http://localhost/").port(PORT_NUMBER).build();
 		Set<Class<?>> set=new HashSet<>();
 		set.add(PrimaryResource.class);
 		set.add(Resource.class);
-		 ResourceConfig config=new ResourceConfig(set);
+		ResourceConfig config=new ResourceConfig(set);
 		server=JdkHttpServerFactory.createHttpServer(builder,config);
-		//server.stop(5);
-		// TODO Auto-generated constructor stub
+		System.out.println("Started Http Server...");
 	}
-	
+
 	public boolean startServer() {
-		System.out.println("in server");
-		//server.start();
 		return true;
 	}
-	
+
 	public boolean stopServer() {
 		server.stop(5);
 		return true;

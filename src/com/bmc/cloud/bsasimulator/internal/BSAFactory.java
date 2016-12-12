@@ -5,6 +5,10 @@ import java.io.IOException;
 import com.bmc.cloud.bsasimulator.internal.Constants.AUTHENTICATOR_TYPE;
 import com.bmc.cloud.bsasimulator.internal.Constants.DB_TYPE;
 import com.bmc.cloud.bsasimulator.internal.Constants.REST_SERVER_TYPE;
+import com.bmc.cloud.bsasimulator.proccessor.BSAProcessor;
+import com.bmc.cloud.bsasimulator.proccessor.BSAProcessorImpl;
+import com.bmc.cloud.bsasimulator.response.ResponseGenerator;
+import com.bmc.cloud.bsasimulator.response.ResponseGeneratorImpl;
 import com.bmc.cloud.bsasimulator.resthandler.AuthenticateFromDb;
 import com.bmc.cloud.bsasimulator.resthandler.Authenticator;
 import com.bmc.cloud.bsasimulator.resthandler.HttpRestServer;
@@ -34,5 +38,11 @@ public class BSAFactory {
 			helper = new SqliteDBHelper();
 		}
 		return helper;
+	}
+	public static ResponseGenerator getResponseGenerator(){
+		return new ResponseGeneratorImpl();
+	}
+	public static BSAProcessor getBSAProccesser(){
+		return new BSAProcessorImpl();
 	}
 }

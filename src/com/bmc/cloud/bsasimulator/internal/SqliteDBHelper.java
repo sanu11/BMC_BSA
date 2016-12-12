@@ -6,12 +6,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import static com.bmc.cloud.bsasimulator.internal.Constants.PASSWORD;
+import static com.bmc.cloud.bsasimulator.internal.Constants.USERNAME;
+
 public class SqliteDBHelper  implements DBHelper{
 
 	@Override
 	public boolean checkCredentials(String user, String password) throws ClassNotFoundException {
 		// TODO Auto-generated method stub
-		Class.forName("org.sqlite.JDBC");
+		if(user.equals(USERNAME) && password.equals(PASSWORD))
+			return true;
+		/*Class.forName("org.sqlite.JDBC");
 		ResultSet resultSet=null;
 		try {
 			Connection connection=DriverManager.getConnection(Constants.USER_DB_PATH);
@@ -27,7 +32,7 @@ public class SqliteDBHelper  implements DBHelper{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		return false;
 	}
 

@@ -1,5 +1,7 @@
 package com.bmc.cloud.bsasimulator.response;
 
-public interface ResponseGenerator {
+import javax.ws.rs.core.Response;
 
+public interface ResponseGenerator {
+    public Response generate(String filepath);
 }
