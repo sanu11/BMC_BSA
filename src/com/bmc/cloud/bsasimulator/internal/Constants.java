@@ -5,7 +5,7 @@ public class Constants {
 	//Simulator constants.
 	public enum REST_SERVER_TYPE{SIMPLE_HTTTP_SERVER,JETTY_SERVER};
 	public enum AUTHENTICATOR_TYPE{DB,AD_PROD};
-	public static final int PORT_NUMBER=10843;
+	public static final int PORT_NUMBER=10844;
 	//User credentials
 	public static final String USERNAME="BLAdmin";
 	public static final String PASSWORD="bladelogic";

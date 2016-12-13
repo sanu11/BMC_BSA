@@ -1,5 +1,5 @@
 <RESTXMLResponse>
-  <ErrorResponse>
+    <ErrorResponse>
     <Error>Resource not found: No result for fetch</Error>
   </ErrorResponse>
 </RESTXMLResponse>
