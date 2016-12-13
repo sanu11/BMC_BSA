@@ -17,6 +17,7 @@ public class Constants {
 	public static final String JDBC_CONNECTOR_NAME="org.sqlite.JDBC";
 
 	//Path constants.
+	public static final String RESPONSE_PATH="C:\\Program Files\\BMC Software\\Simulator\\RestResponses\\";
 	public static final String VGP_URL="group/Depot/CSM_Virtual_Guest_Packages/";
 	public static final String COMMON_PREFIX="/id/SystemObject/Server/";
 	public static final String BMC_VMware_VirtualInfrastructureManager="BMC_VMware_VirtualInfrastructureManager/87000000/Virtual+Machines/pratik-1/";

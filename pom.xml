@@ -27,7 +27,7 @@
                         <mainClass>com.bmc.cloud.bsasimulator.internal.BSASimulatorMain</mainClass>
                     </manifest>
                 </archive>
-                <configuration>
+                </configuration>
                 <executions>
                     <execution>
                         <id>make-assembly</id>
@@ -39,28 +39,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>jaxb2-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>rest-generate</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <includeBindings>
-                                <includeBinding>*.xjb</includeBinding>
-                            </includeBindings>
-                            <includeSchemas>
-                                <includeSchema>Resources.xsd</includeSchema>
-                            </includeSchemas>
-                            <generateDirectory>${project.build.directory}/generated-sources/jaxb</generateDirectory>
-                            <generatePackage>com.bmc.cloud.bsasimulator.internal.rest.jaxb</generatePackage>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
     <dependencies>
@@ -68,6 +46,11 @@
             <groupId>org.glassfish.jersey.containers</groupId>
             <artifactId>jersey-container-grizzly2-http</artifactId>
             <version>2.24</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-jaxb</artifactId>
+            <version>2.18</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish.jersey.containers</groupId>
