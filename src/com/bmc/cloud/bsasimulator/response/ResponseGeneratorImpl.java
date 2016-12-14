@@ -23,7 +23,7 @@ public class ResponseGeneratorImpl implements ResponseGenerator {
     public Response generate(String filepath) {
 
         filepath=RESPONSE_PATH+filepath;
-        File file=new File(filepath).exists()?new File(filepath):new File(STD_ERROR_FILE);
+        File file=new File(filepath).exists()?new File(filepath):new File(RESPONSE_PATH+STD_ERROR_FILE);
         Document document=null;
         DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
         try {
@@ -38,7 +38,7 @@ public class ResponseGeneratorImpl implements ResponseGenerator {
             e.printStackTrace();
         }
         //Entity<Document> entity=new Entity<Document>(document);
-        Response response=Response.ok(Entity.xml(document)).build();
+        Response response=Response.ok(document,MediaType.APPLICATION_XML).build();
         return response;
     }
 }

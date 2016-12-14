@@ -1,13 +1,13 @@
 package com.bmc.cloud.bsasimulator.resources;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 import com.bmc.cloud.bsasimulator.internal.BSAFactory;
 import com.bmc.cloud.bsasimulator.proccessor.BSAProcessor;
 import org.apache.log4j.Logger;
-import org.w3c.dom.Document;
 
 import static com.bmc.cloud.bsasimulator.internal.Constants.COMMON_PREFIX;
 
@@ -30,7 +30,7 @@ public class PrimaryResource {
     }
     @GET
     @Path(COMMON_PREFIX+"{guid}")
-    @Produces("application/xml")
+    @Produces(MediaType.APPLICATION_XML)
     public Response getGUIDResponse(@PathParam("guid") String guid) {
         logger.debug(uriInfo.getAbsolutePath());
         Response response=processor.process(username,password,guid);
