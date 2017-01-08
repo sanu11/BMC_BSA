@@ -33,7 +33,7 @@ public class SqliteDBHelper  implements DBHelper{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}*/
-		return false;
+		return true;
 	}
 
 	@Override

@@ -13,7 +13,7 @@ import com.sun.net.httpserver.HttpServer;
 
 public class JerseyHttpRestServer {
 	public static void main(String[] args) {
-		URI builder=UriBuilder.fromUri("http://localhost/").port(9000).build();
+		URI builder=UriBuilder.fromUri("http://localhost/").port(10844).build();
 		Set<Class<?>> set=new HashSet<>();
 		set.add(PrimaryResource.class);
 		set.add(Resource.class);

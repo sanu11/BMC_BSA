@@ -1,6 +1,8 @@
 package com.bmc.cloud.bsasimulator.internal;
 
 import java.io.IOException;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 
 import com.bmc.cloud.bsasimulator.internal.Constants.AUTHENTICATOR_TYPE;
 import com.bmc.cloud.bsasimulator.internal.Constants.DB_TYPE;
@@ -16,7 +18,7 @@ import com.bmc.cloud.bsasimulator.resthandler.RestServer;
 
 public class BSAFactory {
 	
-	public static RestServer getRestServer(REST_SERVER_TYPE type) throws IOException{
+	public static RestServer getRestServer(REST_SERVER_TYPE type) throws IOException, KeyManagementException, NoSuchAlgorithmException {
 		RestServer server=null;
 		if(type.equals(REST_SERVER_TYPE.SIMPLE_HTTTP_SERVER)){
 			server=new HttpRestServer();

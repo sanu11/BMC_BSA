@@ -29,7 +29,6 @@ public class ResponseGeneratorImpl implements ResponseGenerator {
         try {
             DocumentBuilder builder=factory.newDocumentBuilder();
             document=builder.parse(file);
-
         } catch (ParserConfigurationException e) {
             e.printStackTrace();
         } catch (SAXException e) {

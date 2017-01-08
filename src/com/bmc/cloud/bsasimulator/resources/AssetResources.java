@@ -22,7 +22,7 @@ public class AssetResources {
     }
 
     @GET
-    @Produces("application/xml")
+    @Produces("text/xml")
     public Response getAssetResponse(){
         String filepath=guid+"-"+"Assets";
         return processor.process(username,password,filepath);
@@ -30,7 +30,7 @@ public class AssetResources {
 
     @GET
     @Path(BMC_VMware_VirtualInfrastructureManager)
-    @Produces("application/xml")
+    @Produces("text/xml")
     public Response getAssetResource(){
         String filepath=guid+"-"+"Assets"+"-"+BMC_VMware_VirtualInfrastructureManager.replace('/','-');
         return processor.process(username,password,filepath);
@@ -38,7 +38,7 @@ public class AssetResources {
 
     @GET
     @Path(BMC_VMware_VirtualInfrastructureManager+"{Resource}")
-    @Produces("application/xml")
+    @Produces("text/xml")
     public Response getAssetResource(@PathParam("Resource") String resource){
         String filepath=guid+"-"+"Assets"+"-"+BMC_VMware_VirtualInfrastructureManager.replace('/','-')+resource;
         return processor.process(username,password,filepath);
@@ -46,7 +46,7 @@ public class AssetResources {
     }
     @GET
     @Path(BMC_VMware_VirtualInfrastructureManager+"Hardware/"+"{Resource}")
-    @Produces("application/xml")
+    @Produces("text/xml")
     public Response getHardWareAssetResource(@PathParam("Resource") String resource){
         String filepath=guid+"-"+"Assets"+"-"+BMC_VMware_VirtualInfrastructureManager.replace('/','-')+"Hardware-"+resource;
         return processor.process(username,password,filepath);

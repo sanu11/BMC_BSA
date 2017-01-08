@@ -1,6 +1,8 @@
 package com.bmc.cloud.bsasimulator.internal;
 
 import java.io.IOException;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 
 import com.bmc.cloud.bsasimulator.internal.Constants.AUTHENTICATOR_TYPE;
 import com.bmc.cloud.bsasimulator.internal.Constants.DB_TYPE;
@@ -23,6 +25,10 @@ public class BSASimulatorImpl implements BSASimulator{
 			server= BSAFactory.getRestServer(REST_SERVER_TYPE.SIMPLE_HTTTP_SERVER);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		} catch (KeyManagementException e) {
 			e.printStackTrace();
 		}
 		return server;

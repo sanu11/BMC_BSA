@@ -22,4 +22,5 @@ public class Constants {
 	public static final String COMMON_PREFIX="/id/SystemObject/Server/";
 	public static final String BMC_VMware_VirtualInfrastructureManager="BMC_VMware_VirtualInfrastructureManager/87000000/Virtual+Machines/pratik-1/";
 	public static final String STD_ERROR_FILE="stderror.xml";
+	public static final String QUERY_PARAM="?username=BLAdmin&password=bladelogic&authType=SRP&role=BLAdmins&version=8.2";
 }
