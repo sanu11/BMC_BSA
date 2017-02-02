@@ -37,7 +37,7 @@ public class ResponseGeneratorImpl implements ResponseGenerator {
             e.printStackTrace();
         }
         //Entity<Document> entity=new Entity<Document>(document);
-        Response response=Response.ok(document,MediaType.APPLICATION_XML).build();
+        Response response=Response.ok(document,MediaType.TEXT_XML).build();
         return response;
     }
 }
