@@ -1,0 +1,6 @@
+6
+Microsoft
+1
+Build 7600
+Windows Server 2008 R2
+NULL

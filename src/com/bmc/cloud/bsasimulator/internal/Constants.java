@@ -4,8 +4,10 @@ public class Constants {
 	
 	//Simulator constants.
 	public enum REST_SERVER_TYPE{SIMPLE_HTTTP_SERVER,JETTY_SERVER};
+
 	public enum AUTHENTICATOR_TYPE{DB,AD_PROD};
 	public static final int PORT_NUMBER=10844;
+
 	//User credentials
 	public static final String USERNAME="BLAdmin";
 	public static final String PASSWORD="bladelogic";
@@ -17,8 +19,13 @@ public class Constants {
 	public static final String JDBC_CONNECTOR_NAME="org.sqlite.JDBC";
 
 	//Path constants.
-	public static final String RESPONSE_PATH="\\Responses\\";
-	public static final String VGP_URL="group/Depot/CSM_Virtual_Guest_Packages/";
+	public static final String RESPONSE_TEMPLATE_PATH=".\\src\\Template\\";
+	public static final String RESPONSE_VALUES_PATH=".\\src\\Values\\";
+	public static final String RESPONSE_PARAMETERS_TO_BE_REPLACED_PATH=".\\src\\ParametersToBeReplaced\\";
+
+	public static final String REST_RESPONSE_PATH="C:\\Users\\Public\\Response2\\Rest\\";
+	public static final String SOAP_RESPONSE_PATH="C:\\Users\\Public\\Response2\\Soap\\";
+	public static final String VGP_URL="group/Depot/CSM_Virtual_Guests_Packages/";
 	public static final String COMMON_PREFIX="/id/SystemObject/Server/";
 	public static final String BMC_VMware_VirtualInfrastructureManager="BMC_VMware_VirtualInfrastructureManager/87000000/Virtual+Machines/pratik-1/";
 	public static final String STD_ERROR_FILE="stderror.xml";

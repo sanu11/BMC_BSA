@@ -1,3 +1,4 @@
+com\bmc\cloud\bsasimulator\resources\PrimaryResource$1.class
 com\bmc\cloud\bsasimulator\resources\Resource.class
 com\bmc\cloud\bsasimulator\internal\BSASimulatorImpl.class
 com\bmc\cloud\bsasimulator\internal\BSASimulatorMain.class
@@ -19,8 +20,8 @@ com\bmc\cloud\bsasimulator\resthandler\RequestHandler.class
 com\bmc\cloud\bsasimulator\resources\PrimaryResource.class
 com\bmc\cloud\bsasimulator\resthandler\AuthenticateFromDb.class
 com\bmc\cloud\bsasimulator\internal\Constants.class
-com\bmc\cloud\bsasimulator\proccessor\BSAProcessorImpl.class
 com\bmc\cloud\bsasimulator\proccessor\DBSetup.class
+com\bmc\cloud\bsasimulator\resources\PrimaryResource$2.class
 com\bmc\cloud\bsasimulator\response\ResponseGenerator.class
 com\bmc\cloud\bsasimulator\response\ResponseGeneratorImpl.class
 com\bmc\cloud\bsasimulator\internal\Constants$AUTHENTICATOR_TYPE.class

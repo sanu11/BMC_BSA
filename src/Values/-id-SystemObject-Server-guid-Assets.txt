@@ -1,0 +1,3 @@
+BMC_VMware_VirtualInfrastructureManager
+87000000
+87000000

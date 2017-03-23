@@ -1,0 +1,1 @@
+cluster_1::cluster_1::1 VMwareCluster domain-c26 cluster_2::cluster_2::1 VMwareCluster domain-c41

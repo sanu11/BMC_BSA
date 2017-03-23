@@ -1,0 +1,44 @@
+http://localhost:10844/group/Depot/CSM_Virtual_Guest_Packages/VMW-W2k8-64B-40GB?username=BLAdmin&password=bladelogic&authType=SRP&role=BLAdmins&version=8.2
+getVirtualGuestPackage
+groupExistsByTypeAndName
+groupNameToId
+http://localhost:10844/id/SystemObject/Server/b27b5bb7-ac49-42b0-a57a-0e10bb2dc11a/Assets?username=BLAdmin&password=XXXXX&authType=SRP&role=BLAdmins&version=8.2
+http://localhost:10844/id/SystemObject/Server/b27b5bb7-ac49-42b0-a57a-0e10bb2dc11a?username=BLAdmin&password=XXXXX&authType=SRP&role=BLAdmins&version=8.2
+listVirtualEntitiesByEntityManagerServerIdAndEntityType
+createVirtualGuest ----- Skiped
+http://localhost:10844/type/PropertySetClasses/SystemObject/Job/Virtual+Guest+Job/?username=BLAdmin&password=bladelogic&authType=SRP&role=BLAdmins&version=8.2&Name=rb-80-1_VG_Job_1487582657072
+http://localhost:10844/id/SystemObject/Job/Virtual+Guest+Job/0b1d37a8-b3cc-479f-b383-54ae31f63444/Statuses?username=BLAdmin&password=bladelogic&authType=SRP&role=BLAdmins&version=8.2
+http://localhost:10844/id/SystemObject/Job/Virtual+Guest+Job/0b1d37a8-b3cc-479f-b383-54ae31f63444/Statuses/Status3251?username=BLAdmin&password=bladelogic&authType=SRP&role=BLAdmins&version=8.2
+http://localhost:10844/type/PropertySetClasses/SystemObject/Server/?username=BLAdmin&password=bladelogic&authType=SRP&role=BLAdmins&version=8.2&name=rb-80-1
+createUpdateServerPropertyJobWithTargetServer
+execute
+http://localhost:10844/type/PropertySetClasses/SystemObject/Job/Update+Server+Properties+Job/?username=BLAdmin&password=bladelogic&authType=SRP&role=BLAdmins&version=8.2&Name=rb-80-1_USP_Job_1487583491015
+http://localhost:10844/id/SystemObject/Job/Update+Server+Properties+Job/b6a9827b-cf3c-40f9-b95b-729775a90dac/Statuses?username=BLAdmin&password=bladelogic&authType=SRP&role=BLAdmins&version=8.2
+http://localhost:10844/type/PropertySetClasses/SystemObject/Job+Run/?username=BLAdmin&password=bladelogic&authType=SRP&role=BLAdmins&version=8.2&bquery=%22select+*+where+JOB_NAME%3D%22rb-80-1_USP_Job_1487583491015%22+ORDER+BY+START_TIME+DESC%22
+http://localhost:10844/id/SystemObject/Server/b27b5bb7-ac49-42b0-a57a-0e10bb2dc11a/Assets/BMC_VMware_VirtualInfrastructureManager/87000000/Virtual+Machines/rb-80-1/Server+Properties/?username=BLAdmin&password=bladelogic&authType=SRP&role=BLAdmins&version=8.2&type=BMC_VMware_VirtualMachineServer_Properties
+http://localhost:10844/id/SystemObject/Server/b27b5bb7-ac49-42b0-a57a-0e10bb2dc11a/Assets/BMC_VMware_VirtualInfrastructureManager/87000000/Virtual+Machines/rb-80-1?username=BLAdmin&password=bladelogic&authType=SRP&role=BLAdmins&version=8.2&type=BMC_VMware_VirtualMachineServer_Properties
+http://localhost:10844/id/SystemObject/Server/b27b5bb7-ac49-42b0-a57a-0e10bb2dc11a/Assets/?username=BLAdmin&password=XXXXX&authType=SRP&role=BLAdmins&version=8.2
+http://localhost:10844/id/SystemObject/Server/9bfa0c4f-462a-433c-bb34-15c86dde1dc1/Assets/SystemInfo/87000000/System/AssetAttributeValues/Serial+Number?username=BLAdmin&password=bladelogic&authType=SRP&role=BLAdmins&version=8.2
+http://localhost:10844/id/SystemObject/Server/b27b5bb7-ac49-42b0-a57a-0e10bb2dc11a/Assets/BMC_VMware_VirtualInfrastructureManager/87000000/Virtual+Machines/rb-80-1/Hardware/Network+Adapters/?username=BLAdmin&password=bladelogic&authType=SRP&role=BLAdmins&version=8.2&type=BMC_VMware_VirtualMachineHardwareNetwork_Adapters
+http://localhost:10844/id/SystemObject/Server/guid/Assets/System+Info/NetworkAdapter/?username=BLAdmin&password=bladelogic&authType=SRP&role=BLAdmins&version=8.2&type=BMC_VMware_VirtualMachineGuestInfo
+http://localhost:10844/id/SystemObject/Server/guid/Assets/System+Info/NetworkAdapter/0/?username=BLAdmin&password=bladelogic&authType=SRP&role=BLAdmins&version=8.2&type=BMC_VMware_VirtualMachineGuestInfo
+http://localhost:10844/id/SystemObject/Server/guid/Assets/System+Info/NetworkAdapter/1/?username=BLAdmin&password=bladelogic&authType=SRP&role=BLAdmins&version=8.2&type=BMC_VMware_VirtualMachineGuestInfo
+http://localhost:10844/id/SystemObject/Server/9bfa0c4f-462a-433c-bb34-15c86dde1dc1/Assets/System+Info/OpSys/?username=BLAdmin&password=bladelogic&authType=SRP&role=BLAdmins&version=8.2
+http://localhost:10844/id/SystemObject/Server/b27b5bb7-ac49-42b0-a57a-0e10bb2dc11a/Assets/BMC_VMware_VirtualInfrastructureManager/Virtual+Machines/rb-80-1/Hardware/Disks/?username=BLAdmin&password=bladelogic&authType=SRP&role=BLAdmins&version=8.2&type=BMC_VMware_VirtualMachineHardwareDisks  ---- Skiped
+getDBKeyByGroupAndName
+createNSHScriptJob
+createEncryptedString
+addNSHScriptParameterValueByGroupAndName
+addNSHScriptParameterValueByGroupAndName Skiped
+http://localhost:10844/type/PropertySetClasses/SystemObject/Job/NSH+Script+Job/?username=BLAdmin&password=bladelogic&authType=SRP&role=BLAdmins&version=8.2&Name=rb-80-1_create_user_job_1487583723929
+http://localhost:10844/id/SystemObject/Job/NSH+Script+Job/5b476a4e-2807-4213-8acc-45ed2b87001b/Statuses?username=BLAdmin&password=bladelogic&authType=SRP&role=BLAdmins&version=8.2
+http://localhost:10844/id/SystemObject/Job/NSH+Script+Job/5b476a4e-2807-4213-8acc-45ed2b87001b/Statuses/Status3257?username=BLAdmin&password=bladelogic&authType=SRP&role=BLAdmins&version=8.2
+findLastRunKeyByJobKey
+jobRunKeyToJobRunId
+exportNSHScriptRun --- Skiped
+deleteJobByGroupAndName  --- Skiped (Coditional)
+http://localhost:10844/id/SystemObject/Server/9bfa0c4f-462a-433c-bb34-15c86dde1dc1/Assets/Windows+User+List/rb-80?username=BLAdmin&password=bladelogic&authType=SRP&role=BLAdmins&version=8.2
+setPropertyValueByName
+applyAclTemplate  -- Invalid Response available
+http://localhost:10844/id/SystemObject/Server/b27b5bb7-ac49-42b0-a57a-0e10bb2dc11a/Assets/BMC_VMware_VirtualInfrastructureManager/87000000/Virtual+Machines/rb-80-1/BMC_VMware_VirtualMachineInfo?username=BLAdmin&password=bladelogic&authType=SRP&role=BLAdmins&version=8.2&type=BMC_VMware_VirtualMachineGuestInfo
+listVirtualEntityManagers

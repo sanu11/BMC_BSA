@@ -1,0 +1,5 @@
+DiskSize_val
+DiskSizeUnit_val
+Datastore_val
+DatastoreType_val
+ThinProvisioning_val

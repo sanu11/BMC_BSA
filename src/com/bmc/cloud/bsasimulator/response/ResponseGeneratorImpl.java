@@ -1,5 +1,8 @@
 package com.bmc.cloud.bsasimulator.response;
 
+import org.apache.velocity.Template;
+import org.apache.velocity.VelocityContext;
+import org.apache.velocity.app.VelocityEngine;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
@@ -9,10 +12,13 @@ import javax.ws.rs.core.Response;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-import static com.bmc.cloud.bsasimulator.internal.Constants.RESPONSE_PATH;
+import static com.bmc.cloud.bsasimulator.internal.Constants.*;
 import static com.bmc.cloud.bsasimulator.internal.Constants.STD_ERROR_FILE;
 
 /**
@@ -20,10 +26,218 @@ import static com.bmc.cloud.bsasimulator.internal.Constants.STD_ERROR_FILE;
  */
 public class ResponseGeneratorImpl implements ResponseGenerator {
     @Override
-    public Response generate(String filepath) {
+    public Response generate(String DirectoryPath , String fileName) {
 
-        filepath=RESPONSE_PATH+filepath;
-        File file=new File(filepath).exists()?new File(filepath):new File(RESPONSE_PATH+STD_ERROR_FILE);
+        System.out.println("Rest Generator ");
+        System.out.println("File name is "+fileName);
+
+        File ParametersToBeReplacedFile = new File(RESPONSE_PARAMETERS_TO_BE_REPLACED_PATH + fileName +".txt");
+
+        if(ParametersToBeReplacedFile.exists())
+            System.out.println("ParametersToBeReplacedFile Exist");
+        else
+            System.out.println("ParametersToBeReplacedFile Does Not Exist");
+
+
+        File ValuesFile = new File(RESPONSE_VALUES_PATH + fileName +".txt");
+        if(ValuesFile.exists())
+            System.out.println("ValuesFile Exist");
+        else
+            System.out.println("ValuesFile Does Not Exist");
+
+        // create list
+        List <String> ParametersToBeReplacedList = new ArrayList<String>();
+        List <String> ValuesList = new ArrayList<String>();
+        String word;
+
+        // Read ParametersToBeReplacedList
+        try (
+                InputStream fis = new FileInputStream(ParametersToBeReplacedFile);
+                InputStreamReader isr = new InputStreamReader(fis, Charset.forName("UTF-8"));
+                BufferedReader br = new BufferedReader(isr);
+        ) {
+            while ((word = br.readLine()) != null) {
+                // Do your thing with line
+                ParametersToBeReplacedList.add(word);
+            }
+            br.close();
+            isr.close();
+            fis.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Read ValuesList
+        try (
+                InputStream fis = new FileInputStream(ValuesFile);
+                InputStreamReader isr = new InputStreamReader(fis, Charset.forName("UTF-8"));
+                BufferedReader br = new BufferedReader(isr);
+        ) {
+            while ((word = br.readLine()) != null) {
+                ValuesList.add("\""+word+"\"");
+            }
+            br.close();
+            isr.close();
+            fis.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // create iterator to iterate on lists
+        Iterator <String> ParametersToBeReplacedList_Iterator = ParametersToBeReplacedList.iterator();
+        Iterator <String> ValuesList_Iterator = ValuesList.iterator();
+
+        // create a velocityEngine and start
+        VelocityEngine velocityEngine = new VelocityEngine();
+        velocityEngine.init();
+
+        // create a template
+        Template template = velocityEngine.getTemplate(RESPONSE_TEMPLATE_PATH + fileName + ".vm");
+
+        // create a context
+        VelocityContext context = new VelocityContext();
+
+        // replace the variables
+        while(ParametersToBeReplacedList_Iterator.hasNext() && ValuesList_Iterator.hasNext())
+        {
+            context.put(ParametersToBeReplacedList_Iterator.next(),ValuesList_Iterator.next());
+        }
+
+        // writing updated context to a file
+        PrintWriter out=null;
+        File file=new File(RESPONSE_TEMPLATE_PATH +"response.xml");
+        try {
+            out=new PrintWriter(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        template.merge(context,out);
+        out.close();
+
+
+    //  Create a XML Response
+        Document document=null;
+        DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
+        try {
+            DocumentBuilder builder=factory.newDocumentBuilder();
+            document=builder.parse(file);
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //Entity<Document> entity=new Entity<Document>(document);
+        Response response=Response.ok(document,MediaType.TEXT_XML).build();
+        return response;
+    }
+    public Response generate(String DirectoryPath , String fileName,String SoapCommandType) {
+
+        System.out.println("Soap Generator");
+        System.out.println("File name is "+fileName);
+
+        File ParametersToBeReplacedFile = null;
+        if(fileName.equals("getVirtualGuestPackage")) {
+            System.out.println("If condition ");
+            ParametersToBeReplacedFile = new File(RESPONSE_PARAMETERS_TO_BE_REPLACED_PATH + fileName +".txt");
+        }
+        else {
+            System.out.println(SoapCommandType+".txt");
+            ParametersToBeReplacedFile = new File(RESPONSE_PARAMETERS_TO_BE_REPLACED_PATH + SoapCommandType + ".txt");
+        }
+
+        if(ParametersToBeReplacedFile.exists())
+            System.out.println("ParametersToBeReplacedFile Exist");
+        else
+            System.out.println("ParametersToBeReplacedFile Does Not Exist");
+
+
+        File ValuesFile = new File(RESPONSE_VALUES_PATH + fileName +".txt");
+        if(ValuesFile.exists())
+            System.out.println("ValuesFile Exist");
+        else
+            System.out.println("ValuesFile Does Not Exist");
+
+        // create list
+        List <String> ParametersToBeReplacedList = new ArrayList<String>();
+        List <String> ValuesList = new ArrayList<String>();
+        String word;
+
+        // Read ParametersToBeReplacedList
+        try (
+                InputStream fis = new FileInputStream(ParametersToBeReplacedFile);
+                InputStreamReader isr = new InputStreamReader(fis, Charset.forName("UTF-8"));
+                BufferedReader br = new BufferedReader(isr);
+        ) {
+            while ((word = br.readLine()) != null) {
+                // Do your thing with line
+                ParametersToBeReplacedList.add(word);
+            }
+            br.close();
+            isr.close();
+            fis.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Read ValuesList
+        try (
+                InputStream fis = new FileInputStream(ValuesFile);
+                InputStreamReader isr = new InputStreamReader(fis, Charset.forName("UTF-8"));
+                BufferedReader br = new BufferedReader(isr);
+        ) {
+            while ((word = br.readLine()) != null) {
+                ValuesList.add(word);
+            }
+            br.close();
+            isr.close();
+            fis.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // create iterator to iterate on lists
+        Iterator <String> ParametersToBeReplacedList_Iterator = ParametersToBeReplacedList.iterator();
+        Iterator <String> ValuesList_Iterator = ValuesList.iterator();
+
+        // create a velocityEngine and start
+        VelocityEngine velocityEngine = new VelocityEngine();
+        velocityEngine.init();
+
+        // create a template
+        Template template = null;
+        if(SoapCommandType==null || fileName.equals("getVirtualGuestPackage")) {
+            System.out.println("If condition ");
+            template = velocityEngine.getTemplate(RESPONSE_TEMPLATE_PATH + fileName + ".vm");
+        }
+        else
+            template = velocityEngine.getTemplate(RESPONSE_TEMPLATE_PATH +SoapCommandType + ".vm");
+
+        // create a context
+        VelocityContext context = new VelocityContext();
+
+        // replace the variables
+        while(ParametersToBeReplacedList_Iterator.hasNext() && ValuesList_Iterator.hasNext())
+        {
+            context.put(ParametersToBeReplacedList_Iterator.next(),ValuesList_Iterator.next());
+        }
+
+        // writing updated context to a file
+        PrintWriter out=null;
+        File file=new File(RESPONSE_TEMPLATE_PATH +"response.xml");
+        try {
+            out=new PrintWriter(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        template.merge(context,out);
+        out.close();
+
+
+        //  Create a XML Response
         Document document=null;
         DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
         try {

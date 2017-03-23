@@ -1,0 +1,6 @@
+VMware_Network_Adapter_MAC_Address
+00:50:56:bd:5e:22
+VMware_Network_Label
+Management-201
+NULL
+NULL

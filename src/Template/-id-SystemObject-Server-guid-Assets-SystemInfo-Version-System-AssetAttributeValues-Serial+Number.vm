@@ -1,0 +1,1 @@
+<?xml version='1.0' encoding='UTF-8'?><RESTXMLResponse><AssetAttributeValueResponse><AssetAttributeValue name="serialNumber" displayName="Serial Number" type="String" value=$serialNumber_val uri="/id/SystemObject/Server/9bfa0c4f-462a-433c-bb34-15c86dde1dc1/Assets/SystemInfo/System/AssetAttributeValues/Serial Number" /></AssetAttributeValueResponse></RESTXMLResponse>

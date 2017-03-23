@@ -26,7 +26,8 @@ public class BSAProcessorImpl implements BSAProcessor {
         Authenticator authenticator = BSAFactory.getAuthenticator(Constants.AUTHENTICATOR_TYPE.DB);
         ResponseGenerator generator= BSAFactory.getResponseGenerator();
         if (authenticator.authenticate(username, password)) {
-            Response response=generator.generate(path+".xml");
+            // no use of REQUEST_TYPE.REST here
+            Response response=generator.generate(path,"temp.xml");
             return  response;
         }
         System.out.println("error");

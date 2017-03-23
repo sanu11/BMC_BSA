@@ -1,0 +1,2 @@
+/id/SystemObject/Server/9bfa0c4f-462a-433c-bb34-15c86dde1dc1/Assets/System Info/NetworkAdapter/0
+/id/SystemObject/Server/9bfa0c4f-462a-433c-bb34-15c86dde1dc1/Assets/System Info/NetworkAdapter/1
