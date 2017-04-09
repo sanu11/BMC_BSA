@@ -1,5 +1,7 @@
 http://localhost:10844/group/Depot/CSM_Virtual_Guest_Packages/VMW-W2k8-64B-40GB?username=BLAdmin&password=bladelogic&authType=SRP&role=BLAdmins&version=8.2
 getVirtualGuestPackage
+http://localhost:10844/type/PropertySetClasses/SystemObject/Server/?username=BLAdmin&password=bladelogic&authType=SRP&role=BLAdmins&version=8.2&name=rb-80-1
+http://localhost:10844/type/AssetClasses/?username=BLAdmin&password=bladelogic&authType=SRP&role=BLAdmins&version=8.2
 groupExistsByTypeAndName
 groupNameToId
 http://localhost:10844/id/SystemObject/Server/b27b5bb7-ac49-42b0-a57a-0e10bb2dc11a/Assets?username=BLAdmin&password=XXXXX&authType=SRP&role=BLAdmins&version=8.2

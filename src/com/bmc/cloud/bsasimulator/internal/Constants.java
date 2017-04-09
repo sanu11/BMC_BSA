@@ -24,10 +24,13 @@ public class Constants {
 	public static final String RESPONSE_PARAMETERS_TO_BE_REPLACED_PATH=".\\src\\ParametersToBeReplaced\\";
 
 	public static final String REST_RESPONSE_PATH="C:\\Users\\Public\\Response2\\Rest\\";
-	public static final String SOAP_RESPONSE_PATH="C:\\Users\\Public\\Response2\\Soap\\";
+	//public static final String SOAP_RESPONSE_PATH="C:\\Users\\Public\\Response2\\Soap\\";
 	public static final String VGP_URL="group/Depot/CSM_Virtual_Guests_Packages/";
 	public static final String COMMON_PREFIX="/id/SystemObject/Server/";
 	public static final String BMC_VMware_VirtualInfrastructureManager="BMC_VMware_VirtualInfrastructureManager/87000000/Virtual+Machines/pratik-1/";
 	public static final String STD_ERROR_FILE="stderror.xml";
 	public static final String QUERY_PARAM="?username=BLAdmin&password=bladelogic&authType=SRP&role=BLAdmins&version=8.2";
+
+    public static int count=1;
+
 }

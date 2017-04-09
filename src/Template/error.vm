@@ -1,0 +1,1 @@
+<RESTXMLResponse><ErrorResponse><Error>Invalid session.  A sessionId or user credentials must be provided.</Error></ErrorResponse></RESTXMLResponse>

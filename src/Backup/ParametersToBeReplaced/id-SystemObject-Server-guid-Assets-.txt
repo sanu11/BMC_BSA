@@ -1,2 +1,0 @@
-name_val
-version_val

@@ -135,18 +135,38 @@ public class ResponseGeneratorImpl implements ResponseGenerator {
     }
     public Response generate(String DirectoryPath , String fileName,String SoapCommandType) {
 
+        if(SoapCommandType==null||fileName.equals("getVirtualGuestPackage"))
+        {
+            Document document=null;
+            DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
+            try {
+                DocumentBuilder builder=factory.newDocumentBuilder();
+
+                if(fileName.equals("getVirtualGuestPackage"))
+                    document=builder.parse(DirectoryPath+fileName+".txt");
+                else
+                    document=builder.parse(DirectoryPath+fileName);
+
+
+            } catch (ParserConfigurationException e) {
+                e.printStackTrace();
+            } catch (SAXException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            System.out.println("returning response file ");
+            //Entity<Document> entity=new Entity<Document>(document);
+            Response response=Response.ok(document,MediaType.TEXT_XML).encoding("UTF-8").build();
+            return response;
+        }
+
         System.out.println("Soap Generator");
         System.out.println("File name is "+fileName);
 
-        File ParametersToBeReplacedFile = null;
-        if(fileName.equals("getVirtualGuestPackage")) {
-            System.out.println("If condition ");
-            ParametersToBeReplacedFile = new File(RESPONSE_PARAMETERS_TO_BE_REPLACED_PATH + fileName +".txt");
-        }
-        else {
-            System.out.println(SoapCommandType+".txt");
-            ParametersToBeReplacedFile = new File(RESPONSE_PARAMETERS_TO_BE_REPLACED_PATH + SoapCommandType + ".txt");
-        }
+        System.out.println("Soap command type is "+SoapCommandType+".txt");
+        File ParametersToBeReplacedFile = new File(RESPONSE_PARAMETERS_TO_BE_REPLACED_PATH + SoapCommandType + ".txt");
+
 
         if(ParametersToBeReplacedFile.exists())
             System.out.println("ParametersToBeReplacedFile Exist");
@@ -173,6 +193,7 @@ public class ResponseGeneratorImpl implements ResponseGenerator {
         ) {
             while ((word = br.readLine()) != null) {
                 // Do your thing with line
+
                 ParametersToBeReplacedList.add(word);
             }
             br.close();
@@ -208,12 +229,7 @@ public class ResponseGeneratorImpl implements ResponseGenerator {
 
         // create a template
         Template template = null;
-        if(SoapCommandType==null || fileName.equals("getVirtualGuestPackage")) {
-            System.out.println("If condition ");
-            template = velocityEngine.getTemplate(RESPONSE_TEMPLATE_PATH + fileName + ".vm");
-        }
-        else
-            template = velocityEngine.getTemplate(RESPONSE_TEMPLATE_PATH +SoapCommandType + ".vm");
+        template = velocityEngine.getTemplate(RESPONSE_TEMPLATE_PATH +SoapCommandType + ".vm");
 
         // create a context
         VelocityContext context = new VelocityContext();

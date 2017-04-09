@@ -7,6 +7,9 @@ import javax.ws.rs.core.*;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.*;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 import com.bmc.cloud.bsasimulator.internal.BSAFactory;
 import com.bmc.cloud.bsasimulator.proccessor.BSAProcessor;
@@ -35,6 +38,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
+import java.util.Random;
 
 import static com.bmc.cloud.bsasimulator.internal.Constants.*;
 
@@ -45,6 +49,7 @@ public class PrimaryResource {
     @QueryParam("password")
     String password;
     static BSAProcessor processor= BSAFactory.getBSAProccesser();
+    static int count=1;
     @Context
     UriInfo uriInfo;
     final static Logger logger=Logger.getLogger(com.bmc.cloud.bsasimulator.resources.Resource.class);
@@ -57,7 +62,7 @@ public class PrimaryResource {
         System.out.println("getLoginServiceWSDL");
         String filepath="LoginService.wsdl";
         ResponseGenerator generator=BSAFactory.getResponseGenerator();
-        Response response=generator.generate(SOAP_RESPONSE_PATH,filepath,null);
+        Response response=generator.generate(RESPONSE_TEMPLATE_PATH,filepath,null);
         return response;
     }
 
@@ -69,7 +74,7 @@ public class PrimaryResource {
         System.out.println("getCLIWsdl");
         String filepath="CLITunnelService.wsdl";
         ResponseGenerator generator=BSAFactory.getResponseGenerator();
-        Response response=generator.generate(SOAP_RESPONSE_PATH,filepath,null);
+        Response response=generator.generate(RESPONSE_TEMPLATE_PATH,filepath,null);
         return response;
     }
     @GET
@@ -80,7 +85,7 @@ public class PrimaryResource {
         System.out.println("getAssumeRoleWsdl");
         String filepath="AssumeRoleService.wsdl";
         ResponseGenerator generator=BSAFactory.getResponseGenerator();
-        Response response=generator.generate(SOAP_RESPONSE_PATH,filepath,null);
+        Response response=generator.generate(RESPONSE_TEMPLATE_PATH,filepath,null);
         return response;
     }
     @POST
@@ -89,9 +94,12 @@ public class PrimaryResource {
     public Response loginService(InputStream stream){
         System.out.println(uriInfo.getAbsolutePath());
         System.out.println("loginService");
-        String filepath="loginService.xml";
+        String fileName="loginService"+(count++)+".xml";
+        if (count==15){
+            count=1;
+        }
         ResponseGenerator generator=BSAFactory.getResponseGenerator();
-        Response response=generator.generate(SOAP_RESPONSE_PATH,filepath,null);
+        Response response=generator.generate(RESPONSE_TEMPLATE_PATH,fileName,null);
         return response;
     }
 
@@ -103,30 +111,59 @@ public class PrimaryResource {
         System.out.println("assumeRoleService");
         String file="assume.xml";
         ResponseGenerator generator=BSAFactory.getResponseGenerator();
-        Response response=generator.generate(SOAP_RESPONSE_PATH,file,null);
+        Response response=generator.generate(RESPONSE_TEMPLATE_PATH,file,null);
         return response;
     }
 
     @POST
     @Path("services/CLITunnelService")
     @Produces("text/xml")
-    public Response CLITunnelService(InputStream stream) throws ParserConfigurationException, IOException, SAXException {
+    public Response CLITunnelService(InputStream stream) throws ParserConfigurationException, IOException, SAXException, TransformerException {
         System.out.println("Into ClitTunnel Service");
         DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
         DocumentBuilder builder=factory.newDocumentBuilder();
         Document document=builder.parse(stream);
         document.getDocumentElement().normalize();
-
-        NodeList list=document.getElementsByTagName("clit:commandName");
+        System.out.println("hello");
+        System.out.println(document.getNodeName());
+        OutputStream outputStream=new PrintStream(System.out);
+       //printDocument(document,outputStream);
+        NodeList list=document.getElementsByTagName("ns4:commandName");
         Node node=list.item(0);
-
-        NodeList body=(document.getElementsByTagName("soapenv:Body")).item(0).getChildNodes();
-        Node command=body.item(1);
-        System.out.println(command.getNodeName());
-
+        System.out.println("Command name is "+node.getTextContent());
+       /* NodeList body=(document.getElementsByTagName("S:Body")).item(0).getChildNodes();
+        String CommandType=null;
+        for(int i=0;i<body.getLength();i++)
+        {
+            if(body.item(i).getNodeType()==Node.ELEMENT_NODE)
+            {
+                CommandType= body.item(i).getNodeName();
+                break;
+            }
+        }*/
+       // Node command=document.getElementById("ns4:executeCommandByParamList");
+        //System.out.println("Command type is "+CommandType);
         ResponseGenerator generator = BSAFactory.getResponseGenerator();
-        Response response = generator.generate(RESPONSE_TEMPLATE_PATH,node.getTextContent(),command.getNodeName().substring(5));
+        //CommandType=CommandType.substring(CommandType.indexOf(':')+1);
+        String CommandType="executeCommandByParamList";
+        if(node.getTextContent().equals("createVirtualGuest")){
+            CommandType="executeCommandByParamListAndAttachment";
+        }
+        Response response = generator.generate(RESPONSE_TEMPLATE_PATH,node.getTextContent(),CommandType);
         return response;
+    }
+
+    public static void printDocument(Document doc, OutputStream out) throws IOException, TransformerException, TransformerException {
+        TransformerFactory tf = TransformerFactory.newInstance();
+        Transformer transformer = tf.newTransformer();
+        transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "no");
+        transformer.setOutputProperty(OutputKeys.METHOD, "xml");
+        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+        transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+        transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
+
+        transformer.transform(new DOMSource(doc),
+                new StreamResult(new OutputStreamWriter(out, "UTF-8")));
     }
     @POST
     @Path("/{default : .*}")
@@ -136,7 +173,7 @@ public class PrimaryResource {
         System.out.println("soapDefaultPath");
         String filepath="loginService.xml";
         ResponseGenerator generator=BSAFactory.getResponseGenerator();
-        Response response=generator.generate(SOAP_RESPONSE_PATH,filepath,null);
+        Response response=generator.generate(RESPONSE_TEMPLATE_PATH,filepath,null);
         return response;
 
     }
@@ -153,14 +190,14 @@ public class PrimaryResource {
         File responsefile;
         HttpResponse response;
 
-        File currfile=new File(REST_RESPONSE_PATH+ "-group-Depot-CSM_Virtual_Guest_Packages-VGP_Name.vm");
+        File currfile=new File(RESPONSE_TEMPLATE_PATH+ "-group-Depot-CSM_Virtual_Guest_Packages-VGP_Name.vm");
 
         System.out.println("file name is "+ RESPONSE_TEMPLATE_PATH +"-group-Depot-CSM_Virtual_Guest_Packages-VGP_Name.vm");
 
         if(!currfile.exists()) {
             System.out.println("Template File Does Not Exist");
         }
-            else
+        else
         {
             System.out.println("Template File Exist");
         }
@@ -223,6 +260,64 @@ public class PrimaryResource {
         ResponseGenerator generator = new ResponseGeneratorImpl();
         return generator.generate(RESPONSE_TEMPLATE_PATH,"-id-SystemObject-Server-guid");
     }
+
+    @GET
+    @Path("/type/PropertySetClasses/SystemObject/Server/")
+    @Produces("text/xml")
+    public Response getTypePropertySetClassSysObjServer() throws IOException {
+        logger.debug(uriInfo.getAbsolutePath());
+
+        System.out.println("/type/PropertySetClasses/SystemObject/Server/");
+
+        String temp=uriInfo.getPath().toString();
+
+        File responsefile;
+        HttpResponse response;
+
+        File currfile=new File(RESPONSE_TEMPLATE_PATH + "-type-PropertySetClasses-SystemObject-Server-.vm");
+
+
+        System.out.println("file name is "+ RESPONSE_TEMPLATE_PATH + "-type-PropertySetClasses-SystemObject-Server-.vm");
+
+        if(!currfile.exists()) {
+            System.out.println("Template File Does Not Exist");
+        }
+        else
+        {
+            System.out.println("Template File Exist");
+        }
+        ResponseGenerator generator = new ResponseGeneratorImpl();
+        return generator.generate(RESPONSE_TEMPLATE_PATH,"-type-PropertySetClasses-SystemObject-Server-");
+    }
+    @GET
+    @Path("/type/AssetClasses/")
+    @Produces("text/xml")
+    public Response getAssetClasses() throws IOException {
+        logger.debug(uriInfo.getAbsolutePath());
+
+        System.out.println("/type/Assets/");
+
+        String temp=uriInfo.getPath().toString();
+
+        File responsefile;
+        HttpResponse response;
+
+        File currfile=new File(RESPONSE_TEMPLATE_PATH + "-type-AssetClasses-.vm");
+
+
+        System.out.println("file name is "+ RESPONSE_TEMPLATE_PATH + "-type-AssetClasses-.vm");
+
+        if(!currfile.exists()) {
+            System.out.println("Template File Does Not Exist");
+        }
+        else
+        {
+            System.out.println("Template File Exist");
+        }
+        ResponseGenerator generator = new ResponseGeneratorImpl();
+        return generator.generate(RESPONSE_TEMPLATE_PATH,"-type-AssetClasses-");
+    }
+
     @GET
     @Path("/type/PropertySetClasses/SystemObject/Job/Virtual+Guest+Job/")
     @Produces("text/xml")
@@ -251,6 +346,8 @@ public class PrimaryResource {
         ResponseGenerator generator = new ResponseGeneratorImpl();
         return generator.generate(RESPONSE_TEMPLATE_PATH,"-type-PropertySetClasses-SystemObject-Job-Virtual+Guest+Job-");
     }
+
+
     @GET
     @Path("/id/SystemObject/Job/Virtual+Guest+Job/{ObjId}/Statuses")
     @Produces("text/xml")
@@ -308,6 +405,35 @@ public class PrimaryResource {
         return generator.generate(RESPONSE_TEMPLATE_PATH,"-id-SystemObject-Job-Virtual+Guest+Job-ObjId-Statuses-StatusName");
     }
     @GET
+    @Path("type/PropertySetClasses/SystemObject/Job/Update+Server+Properties+Job/")
+    @Produces("text/xml")
+    public Response getSysObjUpdateServerPropertiesJob() throws IOException {
+        logger.debug(uriInfo.getAbsolutePath());
+
+        System.out.println("type/PropertySetClasses/SystemObject/Job/Update+Server+Properties+Job/");
+
+        String temp=uriInfo.getPath().toString();
+
+        File responsefile;
+        HttpResponse response;
+
+        File currfile=new File(RESPONSE_TEMPLATE_PATH + "-type-PropertySetClasses-SystemObject-Job-Update+Server+Properties+Job-.vm");
+
+
+        System.out.println("file name is "+ RESPONSE_TEMPLATE_PATH + "-type-PropertySetClasses-SystemObject-Job-Update+Server+Properties+Job-.vm");
+
+        if(!currfile.exists()) {
+            System.out.println("Template File Does Not Exist");
+        }
+        else
+        {
+            System.out.println("Template File Exist");
+        }
+        ResponseGenerator generator = new ResponseGeneratorImpl();
+        return generator.generate(RESPONSE_TEMPLATE_PATH,"-type-PropertySetClasses-SystemObject-Job-Update+Server+Properties+Job-");
+    }
+
+    @GET
     @Path("id/SystemObject/Job/Update+Server+Properties+Job/{ObjId}/Statuses")
     @Produces("text/xml")
     public Response getGUIDUpdateServerPropertiesJobStatuses(@PathParam("ObjId") String ObjId) throws IOException {
@@ -364,6 +490,35 @@ public class PrimaryResource {
         ResponseGenerator generator = new ResponseGeneratorImpl();
         return generator.generate(RESPONSE_TEMPLATE_PATH,"-id-SystemObject-Server-guid-Assets-Asset_URI-Version-Machine-ServerName-Server+Properties-");
     }
+
+    @GET
+    @Path("/type/PropertySetClasses/SystemObject/Job/Compliance+Job/")
+    @Produces("text/xml")
+    public Response getSysObjComplianceJob() throws IOException {
+        logger.debug(uriInfo.getAbsolutePath());
+
+        System.out.println("-type-PropertySetClasses-SystemObject-Job-Compliance+Job-");
+
+        String temp=uriInfo.getPath().toString();
+
+        File responsefile;
+        HttpResponse response;
+
+        File currfile=new File(RESPONSE_TEMPLATE_PATH + "-type-PropertySetClasses-SystemObject-Job-Compliance+Job-.vm");
+
+
+        System.out.println("file name is "+ RESPONSE_TEMPLATE_PATH + "-type-PropertySetClasses-SystemObject-Job-Compliance+Job-.vm");
+
+        if(!currfile.exists()) {
+            System.out.println("Template File Does Not Exist");
+        }
+        else
+        {
+            System.out.println("Template File Exist");
+        }
+        ResponseGenerator generator = new ResponseGeneratorImpl();
+        return generator.generate(RESPONSE_TEMPLATE_PATH,"-type-PropertySetClasses-SystemObject-Job-Compliance+Job-");
+    }
     @GET
     @Path("/id/SystemObject/Server/{guid}/Assets/{Asset_URI}/{Version}/{Machine}/{ServerName}")
     @Produces("text/xml")
@@ -407,7 +562,7 @@ public class PrimaryResource {
         File responsefile;
         HttpResponse response;
 
-        File currfile=new File(RESPONSE_TEMPLATE_PATH + "-id-SystemObject-Server-guid-Assets-SystemInfo-Version-System-AssetAttributeValues-Serial+Number");
+        File currfile=new File(RESPONSE_TEMPLATE_PATH + "-id-SystemObject-Server-guid-Assets-SystemInfo-Version-System-AssetAttributeValues-Serial+Number.vm");
 
 
         System.out.println("file name is "+ RESPONSE_TEMPLATE_PATH + "-id-SystemObject-Server-guid-Assets-SystemInfo-Version-System-AssetAttributeValues-Serial+Number.vm");
@@ -421,6 +576,34 @@ public class PrimaryResource {
         }
         ResponseGenerator generator = new ResponseGeneratorImpl();
         return generator.generate(RESPONSE_TEMPLATE_PATH,"-id-SystemObject-Server-guid-Assets-SystemInfo-Version-System-AssetAttributeValues-Serial+Number");
+    }
+    @GET
+    @Path("/type/PropertySetClasses/SystemObject/Job+Run/")
+    @Produces("text/xml")
+    public Response getSysObjJobRun() throws IOException {
+        logger.debug(uriInfo.getAbsolutePath());
+
+        System.out.println("/type/PropertySetClasses/SystemObject/Job+Run/");
+
+        String temp=uriInfo.getPath().toString();
+
+        File responsefile;
+        HttpResponse response;
+
+        File currfile=new File(RESPONSE_TEMPLATE_PATH + "-type-PropertySetClasses-SystemObject-Job+Run-.vm");
+
+
+        System.out.println("file name is "+ RESPONSE_TEMPLATE_PATH + "-type-PropertySetClasses-SystemObject-Job+Run-.vm");
+
+        if(!currfile.exists()) {
+            System.out.println("Template File Does Not Exist");
+        }
+        else
+        {
+            System.out.println("Template File Exist");
+        }
+        ResponseGenerator generator = new ResponseGeneratorImpl();
+        return generator.generate(RESPONSE_TEMPLATE_PATH,"-type-PropertySetClasses-SystemObject-Job+Run-");
     }
 
 
@@ -439,7 +622,7 @@ public class PrimaryResource {
         File responsefile;
         HttpResponse response;
 
-        File currfile=new File(RESPONSE_TEMPLATE_PATH + "-id-SystemObject-Server-guid-Assets-Asset_URI-Version-Machines-ServerName-Hardware-Network+Adapters-");
+        File currfile=new File(RESPONSE_TEMPLATE_PATH + "-id-SystemObject-Server-guid-Assets-Asset_URI-Version-Machines-ServerName-Hardware-Network+Adapters-.vm");
 
 
         System.out.println("file name is "+ RESPONSE_TEMPLATE_PATH + "-id-SystemObject-Server-guid-Assets-Asset_URI-Version-Machines-ServerName-Hardware-Network+Adapters-.vm");
@@ -453,6 +636,36 @@ public class PrimaryResource {
         }
         ResponseGenerator generator = new ResponseGeneratorImpl();
         return generator.generate(RESPONSE_TEMPLATE_PATH,"-id-SystemObject-Server-guid-Assets-Asset_URI-Version-Machines-ServerName-Hardware-Network+Adapters-");
+    }
+
+    @GET
+    @Path("/id/SystemObject/Server/{guid}/Assets/{Asset_URI}/{Machines}/{ServerName}/Hardware/Disks/")
+    @Produces("text/xml")
+    public Response getDisks(@PathParam("guid") String guid,@PathParam("Asset_URI") String Asset_URI,
+                                      @PathParam("Machines") String Machines,@PathParam("ServerName") String ServerName) throws IOException {
+        logger.debug(uriInfo.getAbsolutePath());
+
+        System.out.println("/id/SystemObject/Server/{guid}/Assets/{Asset_URI}/{Machines}/{ServerName}/Hardware/Disks/");
+
+        String temp=uriInfo.getPath().toString();
+
+        File responsefile;
+        HttpResponse response;
+
+        File currfile=new File(RESPONSE_TEMPLATE_PATH + "-id-SystemObject-Server-guid-Assets-Asset_URI-Machines-ServerName-Hardware-Disks-");
+
+
+        System.out.println("file name is "+ RESPONSE_TEMPLATE_PATH + "-id-SystemObject-Server-guid-Assets-Asset_URI-Machines-ServerName-Hardware-Disks-.vm");
+
+        if(!currfile.exists()) {
+            System.out.println("Template File Does Not Exist");
+        }
+        else
+        {
+            System.out.println("Template File Exist");
+        }
+        ResponseGenerator generator = new ResponseGeneratorImpl();
+        return generator.generate(RESPONSE_TEMPLATE_PATH,"-id-SystemObject-Server-guid-Assets-Asset_URI-Machines-ServerName-Hardware-Disks-");
     }
 
 
@@ -756,7 +969,8 @@ public class PrimaryResource {
     @GET
     @Path("/{default : .*}")
     @Produces("text/xml")
-    public Response restDefaultPath() throws IOException {
+    public Response restDefaultPath() throws IOException
+    {
         logger.debug(uriInfo.getAbsolutePath());
 
         System.out.println(uriInfo.getAbsolutePath());
@@ -765,36 +979,48 @@ public class PrimaryResource {
         File responsefile;
         HttpResponse response;
 
-        File currfile=new File(RESPONSE_TEMPLATE_PATH + "-"+ temp.replace('/','-')+".vm");
-
-        System.out.println("file name is "+ RESPONSE_TEMPLATE_PATH +"-"+ temp.replace('/','-')+".vm");
-        if(!currfile.exists()) {
-            System.out.println("File does not exist");
-            String url = uriInfo.getAbsolutePath().toString()
-                    + "?username=BLAdmin&password=bladelogic&authType=SRP&role=BLAdmins&version=8.2";
-            System.out.println(url);
-            String bsaURL = UriBuilder.fromUri(uriInfo.getAbsolutePath()).port(10843).scheme("https").host("10.1.32.49").toString() + QUERY_PARAM;
-            System.out.println(bsaURL);
-            HttpRequestBase base = new HttpGet(bsaURL);
-            HttpClient client = getClient(new DefaultHttpClient());
-            base.addHeader("Accept", "text/xml");
-            response = client.execute(base);
-            System.out.println(temp);
-
-            BufferedWriter writer = new BufferedWriter(new FileWriter(currfile));
-        //    writer.write(response,0,response.length());
-            writer.close();
-
-            Response browser_response=Response.ok(response.getEntity().getContent(),MediaType.TEXT_XML).build();
-            return  browser_response;
+        File currfile=new File(RESPONSE_TEMPLATE_PATH+"error.vm");
+        if(currfile.exists())
+        {
+            System.out.println("Error Response file exist");
+            ResponseGenerator generator = new ResponseGeneratorImpl();
+            return generator.generate(REST_RESPONSE_PATH,"error");
         }
         else
         {
-        //    responsefile=new File("C:\\Users\\Public\\Response\\Ideal-responses\\" + temp.replace('/','-')+".xml");
-            System.out.println("------------File Exist ------------------\n"+REST_RESPONSE_PATH +"-"+ temp.replace('/','-')+".vm");
-            ResponseGenerator generator = new ResponseGeneratorImpl();
-            return generator.generate(REST_RESPONSE_PATH,"-"+temp.replace('/','-'));
+            System.out.println("Error Response file Does not exist");
+            return null;
         }
+
+//
+//        System.out.println("file name is "+ RESPONSE_TEMPLATE_PATH +"-"+ temp.replace('/','-')+".vm");
+//        if(!currfile.exists()) {
+//            System.out.println("File does not exist");
+//            String url = uriInfo.getAbsolutePath().toString()
+//                    + "?username=BLAdmin&password=bladelogic&authType=SRP&role=BLAdmins&version=8.2";
+//            System.out.println(url);
+//            String bsaURL = UriBuilder.fromUri(uriInfo.getAbsolutePath()).port(10843).scheme("https").host("10.1.32.49").toString() + QUERY_PARAM;
+//            System.out.println(bsaURL);
+//            HttpRequestBase base = new HttpGet(bsaURL);
+//            HttpClient client = getClient(new DefaultHttpClient());
+//            base.addHeader("Accept", "text/xml");
+//            response = client.execute(base);
+//            System.out.println(temp);
+//
+//            BufferedWriter writer = new BufferedWriter(new FileWriter(currfile));
+//        //    writer.write(response,0,response.length());
+//            writer.close();
+//
+//            Response browser_response=Response.ok(response.getEntity().getContent(),MediaType.TEXT_XML).build();
+//            return  browser_response;
+//        }
+//        else
+//        {
+//        //    responsefile=new File("C:\\Users\\Public\\Response\\Ideal-responses\\" + temp.replace('/','-')+".xml");
+//            System.out.println("------------File Exist ------------------\n"+REST_RESPONSE_PATH +"-"+ temp.replace('/','-')+".vm");
+//            ResponseGenerator generator = new ResponseGeneratorImpl();
+//            return generator.generate(REST_RESPONSE_PATH,"-"+temp.replace('/','-'));
+//        }
 
     }
 

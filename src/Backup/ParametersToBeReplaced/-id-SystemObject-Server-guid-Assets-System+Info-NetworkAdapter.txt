@@ -1,2 +1,0 @@
-uri1_val
-uri2_val

@@ -1,0 +1,85 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Body>
+      <ns6:executeCommandByParamStringResponse xmlns:ns6="http://bladelogic.com/webservices/skeleton/clitunnel">
+         <ns6:return>
+            <ns3:classInstance xmlns:ns3="http://bladelogic.com/webservices/model/clitunnel/xsd">false</ns3:classInstance>
+            <ns3:comments xmlns:ns3="http://bladelogic.com/webservices/model/clitunnel/xsd">No comments</ns3:comments>
+            <ns3:executionTime xmlns:ns3="http://bladelogic.com/webservices/model/clitunnel/xsd">0</ns3:executionTime>
+            <ns3:list xmlns:ns3="http://bladelogic.com/webservices/model/clitunnel/xsd">false</ns3:list>
+            <ns3:memoryUsed xmlns:ns3="http://bladelogic.com/webservices/model/clitunnel/xsd">0</ns3:memoryUsed>
+            <ns3:returnValue s12:type="s13:string" xmlns:ns3="http://bladelogic.com/webservices/model/clitunnel/xsd" xmlns:s12="http://www.w3.org/2001/XMLSchema-instance" xmlns:s13="http://www.w3.org/2001/XMLSchema">BLManager Version = 8.7.00.256
+File server root location = //bmcstrykerclmonbmc/C/Program Files/BMC Software/BladeLogic/storage/
+BLAST usage = Level 1 Enabled
+PropertySync = Disabled
+
+Hostname = roshanVM-2
+OS Name = Windows Server 2012 R2
+Version = 6.3
+Architecture = amd64
+Number of Processors Available to JVM = 4
+JRE Version = 1.8.0_45 from Oracle Corporation
+JRE Data Model = 64-bit
+JRE VM Name = Java HotSpot(TM) 64-Bit Server VM
+Maximum JVM Memory (B) = 5,726,797,824
+Total JVM Memory (B) = 1,672,478,720
+Free JVM Memory (B) = 526,594,424
+Used JVM Memory (B) = 1,145,884,296
+Used File Descriptors = 1,861
+FIPS 140-2 Mode = enabled
+
+BLManager Current Time = Thu Jan 26 23:42:26 GMT-12:00 2017
+BLManager Started = Mon Jan 23 22:58:14 GMT-12:00 2017
+BLManager PID = 8040
+
+Client-Connections Manager
+===========================
+
+Client-Connections listening on ports:
+=======================================
+Control Port = 10852
+Application Service Port = 10841
+
+Maximum concurrent connections = 200
+Open connections = 1
+Idle connections = 1
+Active connections = 0
+Number of client worker threads = 10
+Available client worker threads = 10
+
+Hosts connected to application server:
+=======================================
+Host,User,Role,Type,Idle Time
+--------------------------------------------------
+10.1.32.49,BLAdmin,BLAdmins,UI,0h:0m:50s955ms
+
+Helper Threads Status:
+=======================
+Name,State,Time in state (ms),Additional Info
+--------------------------------------------------
+Accept-Client-Connections-Thread,POLLING,0h:0m:51s432ms,Average polling time over the previous 3 requests is 87235292(ms)
+Select-Client-Connections-Thread,POLLING,0h:0m:50s963ms,Average polling time over the previous 13 requests is 20131299(ms)
+
+Connection Wait Status:
+========================
+Average Wait Time (ms) = 19
+Queue Size = 0
+
+Client-Connections Worker Threads Status:
+==========================================
+Name,State,Time in state (ms),Additional Info
+--------------------------------------------------
+Client-Connections-Thread-0,WAITING_FOR_CLIENT_REQUEST,0h:0m:51s28ms,
+Client-Connections-Thread-1,WAITING_FOR_CLIENT_REQUEST,72h:42m:46s330ms,
+Client-Connections-Thread-2,WAITING_FOR_CLIENT_REQUEST,3h:46m:49s695ms,
+Client-Connections-Thread-3,WAITING_FOR_CLIENT_REQUEST,0h:57m:46s13ms,
+Client-Connections-Thread-4,WAITING_FOR_CLIENT_REQUEST,0h:57m:36s883ms,
+Client-Connections-Thread-5,WAITING_FOR_CLIENT_REQUEST,0h:0m:50s964ms,
+Client-Connections-Thread-6,WAITING_FOR_CLIENT_REQUEST,3h:46m:49s875ms,
+Client-Connections-Thread-7,WAITING_FOR_CLIENT_REQUEST,3h:38m:54s405ms,
+Client-Connections-Thread-8,WAITING_FOR_CLIENT_REQUEST,0h:57m:45s885ms,
+Client-Connections-Thread-9,WAITING_FOR_CLIENT_REQUEST,0h:51m:54s43ms,</ns3:returnValue>
+            <ns3:success xmlns:ns3="http://bladelogic.com/webservices/model/clitunnel/xsd">true</ns3:success>
+         </ns6:return>
+      </ns6:executeCommandByParamStringResponse>
+   </soapenv:Body>
+</soapenv:Envelope>

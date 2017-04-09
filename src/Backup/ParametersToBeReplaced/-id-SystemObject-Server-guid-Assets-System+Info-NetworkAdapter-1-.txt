@@ -1,3 +1,0 @@
-ip_val
-mac_val
-netmask_val
