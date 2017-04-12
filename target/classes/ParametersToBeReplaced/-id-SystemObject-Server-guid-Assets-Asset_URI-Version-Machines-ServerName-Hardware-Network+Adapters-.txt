@@ -1,0 +1,6 @@
+mac_name
+mac_val
+networkLabel_name
+networkLabel_val
+ipAddress_name
+ipAddress_val

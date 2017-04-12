@@ -146,7 +146,7 @@ public class PrimaryResource {
         ResponseGenerator generator = BSAFactory.getResponseGenerator();
         //CommandType=CommandType.substring(CommandType.indexOf(':')+1);
         String CommandType="executeCommandByParamList";
-        if(node.getTextContent().equals("createVirtualGuest")){
+        if(node.getTextContent().equals("createVirtualGuest") || node.getTextContent().equals("exportNSHScriptRun") ){
             CommandType="executeCommandByParamListAndAttachment";
         }
         Response response = generator.generate(RESPONSE_TEMPLATE_PATH,node.getTextContent(),CommandType);

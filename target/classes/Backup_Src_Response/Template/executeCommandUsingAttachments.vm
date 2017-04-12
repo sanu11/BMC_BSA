@@ -1,0 +1,16 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Body>
+      <ns6:executeCommandUsingAttachmentsResponse xmlns:ns6="http://bladelogic.com/webservices/skeleton/clitunnel">
+         <ns6:return>
+            <ns3:classInstance xmlns:ns3="http://bladelogic.com/webservices/model/clitunnel/xsd">false</ns3:classInstance>
+            <ns3:comments xmlns:ns3="http://bladelogic.com/webservices/model/clitunnel/xsd">No comments</ns3:comments>
+            <ns3:executionTime xmlns:ns3="http://bladelogic.com/webservices/model/clitunnel/xsd">0</ns3:executionTime>
+            <ns3:list xmlns:ns3="http://bladelogic.com/webservices/model/clitunnel/xsd">false</ns3:list>
+            <ns3:memoryUsed xmlns:ns3="http://bladelogic.com/webservices/model/clitunnel/xsd">0</ns3:memoryUsed>
+            <ns3:realInputArguments s699:type="s700:string" xmlns:ns3="http://bladelogic.com/webservices/model/clitunnel/xsd" xmlns:s699="http://www.w3.org/2001/XMLSchema-instance" xmlns:s700="http://www.w3.org/2001/XMLSchema">Arguments</ns3:realInputArguments>
+            <ns3:returnValue s703:type="s704:string" xmlns:ns3="http://bladelogic.com/webservices/model/clitunnel/xsd" xmlns:s703="http://www.w3.org/2001/XMLSchema-instance" xmlns:s704="http://www.w3.org/2001/XMLSchema">$ret_val</ns3:returnValue>
+            <ns3:success xmlns:ns3="http://bladelogic.com/webservices/model/clitunnel/xsd">true</ns3:success>
+         </ns6:return>
+      </ns6:executeCommandUsingAttachmentsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>

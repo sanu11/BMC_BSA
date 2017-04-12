@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<VirtualGuestPackageConfiguration>
+    <GeneralInfo>
+        <PackageName>VMW-W2k8-64B-20GB</PackageName>
+        <PackageDescription>VMW-W2k8-64B-20GB</PackageDescription>
+        <DepotGroupId>2000015</DepotGroupId>
+        <VirtualGuestPackageType>2</VirtualGuestPackageType>
+        <VirtualGuestName>test</VirtualGuestName>
+    </GeneralInfo>
+    <PlatformInfo>
+        <VMwareInfo>
+            <ClonedDiskFormat>sameAsSource</ClonedDiskFormat>
+            <IsCustomConfig>false</IsCustomConfig>
+            <VMXDatastore>Templates-vmfs-Aus-HDSG1K-01-40:4A</VMXDatastore>
+            <VMXDatastoreType>Datastore</VMXDatastoreType>
+            <VMFolderPath>/Temp VMs</VMFolderPath>
+            <GuestOSId>1</GuestOSId>
+            <GuestOSVersionId>26</GuestOSVersionId>
+            <PowerOnVMAfterCreation>true</PowerOnVMAfterCreation>
+            <NumOfProcessors>2</NumOfProcessors>
+            <MemoryInMB>4096</MemoryInMB>
+            <VMwareDiskSettings>
+                <DiskInfo>
+                    <DiskSize>$DiskSize_val</DiskSize>
+                    <DiskSizeUnit>$DiskSizeUnit_val</DiskSizeUnit>
+                    <Datastore>$Datastore_val</Datastore>
+                    <DatastoreType>$DatastoreType_val</DatastoreType>
+                    <ThinProvisioning>$ThinProvisioning_val</ThinProvisioning>
+                </DiskInfo>
+            </VMwareDiskSettings>
+            <VMwareNetworkSettings>
+                <NetworkConnection>
+                    <Network>Management-202</Network>
+                    <Adapter>E1000</Adapter>
+                    <ConnectAtPowerOn>true</ConnectAtPowerOn>
+                </NetworkConnection>
+            </VMwareNetworkSettings>
+            <OSCustomizationInfo>
+                <WindowsCustomizationInfo>
+                    <ComputerName>test</ComputerName>
+                    <AdminPassword>BLencrypt:OAUAPOQTEQBNKLQLMQBNZQOEEMPOPTPXTTKMPAXUMNAMWBLWZPTVAMLPBQBLZKNN</AdminPassword>
+                    <Workgroup>WORKGROUP</Workgroup>
+                    <UserName>bmc</UserName>
+                    <Organization>bmc</Organization>
+                    <LicenseKey></LicenseKey>
+                    <LicenseType>perServer</LicenseType>
+                    <NumOfConnections>5</NumOfConnections>
+                    <TimezoneId>1</TimezoneId>
+                    <LocaleId>1</LocaleId>
+                </WindowsCustomizationInfo>
+            </OSCustomizationInfo>
+        </VMwareInfo>
+    </PlatformInfo>
+</VirtualGuestPackageConfiguration>
+

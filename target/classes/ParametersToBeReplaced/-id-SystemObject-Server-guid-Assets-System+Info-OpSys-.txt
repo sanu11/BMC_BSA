@@ -1,0 +1,6 @@
+MajVer_val
+Manufacture_val
+MinVer_val
+OSInternalVer_val
+OSName_val
+OSPatchLevel_val
