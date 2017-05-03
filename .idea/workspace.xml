@@ -2,22 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3cb69838-9885-42c3-80a6-0b1dde484c45" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/bmc/cloud/bsasimulator/internal/ScriptForServerName.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/bmc/cloud/bsasimulator/resources/PrimaryResource$1.class" afterPath="$PROJECT_DIR$/target/classes/com/bmc/cloud/bsasimulator/resources/PrimaryResource$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/bmc/cloud/bsasimulator/resources/PrimaryResource$2.class" afterPath="$PROJECT_DIR$/target/classes/com/bmc/cloud/bsasimulator/resources/PrimaryResource$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/bmc/cloud/bsasimulator/resources/PrimaryResource.class" afterPath="$PROJECT_DIR$/target/classes/com/bmc/cloud/bsasimulator/resources/PrimaryResource.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Backup_Dest_Response/Values/-id-SystemObject-Server-guid-Assets-Windows+User+List-UserName.txt" afterPath="$PROJECT_DIR$/src/Backup_Dest_Response/Values/-id-SystemObject-Server-guid-Assets-Windows+User+List-UserName.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Backup_Dest_Response/Values/-type-PropertySetClasses-SystemObject-Job-NSH+Script+Job-.txt" afterPath="$PROJECT_DIR$/src/Backup_Dest_Response/Values/-type-PropertySetClasses-SystemObject-Job-NSH+Script+Job-.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Backup_Dest_Response/Values/-type-PropertySetClasses-SystemObject-Job-Update+Server+Properties+Job-.txt" afterPath="$PROJECT_DIR$/src/Backup_Dest_Response/Values/-type-PropertySetClasses-SystemObject-Job-Update+Server+Properties+Job-.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Backup_Dest_Response/Values/-type-PropertySetClasses-SystemObject-Job-Virtual+Guest+Job-.txt" afterPath="$PROJECT_DIR$/src/Backup_Dest_Response/Values/-type-PropertySetClasses-SystemObject-Job-Virtual+Guest+Job-.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Backup_Dest_Response/Values/listVirtualEntityManagers.txt" afterPath="$PROJECT_DIR$/src/Backup_Dest_Response/Values/listVirtualEntityManagers.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Backup_Src_Response/Values/listVirtualEntityManagers.txt" afterPath="$PROJECT_DIR$/src/Backup_Src_Response/Values/listVirtualEntityManagers.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Template/response.xml" afterPath="$PROJECT_DIR$/src/Template/response.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Values/-id-SystemObject-Server-guid-Assets-Windows+User+List-UserName.txt" afterPath="$PROJECT_DIR$/src/Values/-id-SystemObject-Server-guid-Assets-Windows+User+List-UserName.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Values/-type-PropertySetClasses-SystemObject-Job-NSH+Script+Job-.txt" afterPath="$PROJECT_DIR$/src/Values/-type-PropertySetClasses-SystemObject-Job-NSH+Script+Job-.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Values/-type-PropertySetClasses-SystemObject-Job-Update+Server+Properties+Job-.txt" afterPath="$PROJECT_DIR$/src/Values/-type-PropertySetClasses-SystemObject-Job-Update+Server+Properties+Job-.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Values/-type-PropertySetClasses-SystemObject-Job-Virtual+Guest+Job-.txt" afterPath="$PROJECT_DIR$/src/Values/-type-PropertySetClasses-SystemObject-Job-Virtual+Guest+Job-.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Values/listVirtualEntityManagers.txt" afterPath="$PROJECT_DIR$/src/Values/listVirtualEntityManagers.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bmc/cloud/bsasimulator/resources/PrimaryResource.java" afterPath="$PROJECT_DIR$/src/com/bmc/cloud/bsasimulator/resources/PrimaryResource.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/uri/uri2.txt" afterPath="$PROJECT_DIR$/src/uri/uri2.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/velocity.log" afterPath="$PROJECT_DIR$/velocity.log" />
     </list>
     <ignored path="Simulator.iws" />
@@ -44,25 +43,47 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PrimaryResource.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PrimaryResource.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/bmc/cloud/bsasimulator/resources/PrimaryResource.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="643">
-              <caret line="170" column="9" selection-start-line="170" selection-start-column="9" selection-end-line="170" selection-end-column="9" />
+            <state relative-caret-position="147">
+              <caret line="7" column="48" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HttpRestServer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/bmc/cloud/bsasimulator/resthandler/HttpRestServer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ScriptForServerName.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/bmc/cloud/bsasimulator/internal/ScriptForServerName.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="483">
+              <caret line="33" column="33" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="33" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#417#418#0" expanded="false" />
+                <element signature="e#440#441#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ResponseGeneratorImpl.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ResponseGeneratorImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/bmc/cloud/bsasimulator/response/ResponseGeneratorImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="104" column="0" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
+            <state relative-caret-position="1932">
+              <caret line="111" column="32" selection-start-line="0" selection-start-column="0" selection-end-line="273" selection-end-column="0" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="imports" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -123,6 +144,7 @@
         <option value="$PROJECT_DIR$/src/com/bmc/cloud/bsasimulator/resthandler/HttpRestServer.java" />
         <option value="$PROJECT_DIR$/src/com/bmc/cloud/bsasimulator/response/ResponseGeneratorImpl.java" />
         <option value="$PROJECT_DIR$/src/com/bmc/cloud/bsasimulator/internal/Constants.java" />
+        <option value="$PROJECT_DIR$/src/com/bmc/cloud/bsasimulator/internal/ScriptForServerName.java" />
         <option value="$PROJECT_DIR$/src/com/bmc/cloud/bsasimulator/resources/PrimaryResource.java" />
       </list>
     </option>
@@ -140,10 +162,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="-7" />
     <option name="width" value="1612" />
-    <option name="height" value="876" />
+    <option name="height" value="867" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -156,7 +177,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
+    <navigator currentView="PackagesPane" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -170,6 +191,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -202,116 +224,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Simulator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Simulator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bsasimulator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resthandler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Simulator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Simulator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bsasimulator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="response" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Simulator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Simulator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bsasimulator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Simulator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Simulator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bsasimulator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Simulator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Simulator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bsasimulator" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="internal" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
-      </pane>
-      <pane id="PackagesPane">
-        <subPane />
       </pane>
       <pane id="Scope">
         <subPane subId="Problems" />
@@ -346,7 +259,48 @@
         <subPane subId="Default" />
         <subPane subId="Tests" />
       </pane>
-      <pane id="Scratches" />
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Simulator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Simulator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Simulator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Simulator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main.resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Simulator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Simulator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com.bmc.cloud.bsasimulator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -721,18 +675,18 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1612" height="876" extended-state="0" />
+    <frame x="-7" y="0" width="1612" height="867" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970026" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.218035" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21798365" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3237598" sideWeight="0.5025" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32839838" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.74562585" sideWeight="0.4975" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.8828338" sideWeight="0.4975" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3270525" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -740,8 +694,8 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.012953368" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21262887" sideWeight="0.38037866" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39918256" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21262887" sideWeight="0.38037866" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -783,20 +737,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$USER_HOME$/.m2/repository/org/glassfish/jersey/core/jersey-server/2.24/jersey-server-2.24.jar!/org/glassfish/jersey/server/ResourceConfig.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="329" column="0" selection-start-line="329" selection-start-column="0" selection-end-line="329" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.m2/repository/org/glassfish/jersey/core/jersey-common/2.24/jersey-common-2.24.jar!/org/glassfish/jersey/internal/util/PropertiesHelper.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.m2/repository/org/glassfish/jersey/core/jersey-common/2.24/jersey-common-2.24.jar!/org/glassfish/jersey/CommonProperties.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="137">
@@ -1127,23 +1067,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/bmc/cloud/bsasimulator/resources/PrimaryResource.java">
+    <entry file="file://$PROJECT_DIR$/src/com/bmc/cloud/bsasimulator/response/ResponseGeneratorImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="643">
-          <caret line="170" column="9" selection-start-line="170" selection-start-column="9" selection-end-line="170" selection-end-column="9" />
+        <state relative-caret-position="1932">
+          <caret line="111" column="32" selection-start-line="0" selection-start-column="0" selection-end-line="273" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/bmc/cloud/bsasimulator/response/ResponseGeneratorImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/com/bmc/cloud/bsasimulator/internal/ScriptForServerName.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="104" column="0" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
+        <state relative-caret-position="483">
+          <caret line="33" column="33" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="33" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#417#418#0" expanded="false" />
+            <element signature="e#440#441#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/bmc/cloud/bsasimulator/resthandler/HttpRestServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/bmc/cloud/bsasimulator/resources/PrimaryResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="7" column="48" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
+          <folding />
         </state>
       </provider>
     </entry>

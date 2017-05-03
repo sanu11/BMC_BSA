@@ -12,13 +12,12 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 import com.bmc.cloud.bsasimulator.internal.BSAFactory;
+import com.bmc.cloud.bsasimulator.internal.ScriptForServerName;
 import com.bmc.cloud.bsasimulator.proccessor.BSAProcessor;
 import com.bmc.cloud.bsasimulator.response.ResponseGenerator;
 import com.bmc.cloud.bsasimulator.response.ResponseGeneratorImpl;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.conn.ConnectionKeepAliveStrategy;
 import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.scheme.SchemeRegistry;
@@ -38,6 +37,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
+import java.util.HashMap;
 import java.util.Random;
 
 import static com.bmc.cloud.bsasimulator.internal.Constants.*;
@@ -264,10 +264,16 @@ public class PrimaryResource {
     @GET
     @Path("/type/PropertySetClasses/SystemObject/Server/")
     @Produces("text/xml")
-    public Response getTypePropertySetClassSysObjServer() throws IOException {
+    public Response getTypePropertySetClassSysObjServer(@QueryParam("name") String VmName) throws IOException {
         logger.debug(uriInfo.getAbsolutePath());
 
         System.out.println("/type/PropertySetClasses/SystemObject/Server/");
+
+
+        int LastIndex=VmName.lastIndexOf('-');
+        System.out.println(VmName.substring(0,LastIndex));
+
+        ScriptForServerName.ChangeServerName(VmName.substring(0,LastIndex));
 
         String temp=uriInfo.getPath().toString();
 
