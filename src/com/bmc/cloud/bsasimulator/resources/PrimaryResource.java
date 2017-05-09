@@ -18,6 +18,8 @@ import com.bmc.cloud.bsasimulator.response.ResponseGenerator;
 import com.bmc.cloud.bsasimulator.response.ResponseGeneratorImpl;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.conn.ConnectionKeepAliveStrategy;
 import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.scheme.SchemeRegistry;
@@ -54,6 +56,33 @@ public class PrimaryResource {
     UriInfo uriInfo;
     final static Logger logger=Logger.getLogger(com.bmc.cloud.bsasimulator.resources.Resource.class);
 
+    @GET
+    @Path("/{default : .*}")
+    @Produces("text/xml")
+    public Response restDefaultPath() throws IOException
+    {
+        logger.debug(uriInfo.getAbsolutePath());
+
+        System.out.println(uriInfo.getAbsolutePath());
+        System.out.println("defaultPath()");
+        String temp=uriInfo.getPath().toString();
+        File responsefile;
+        HttpResponse response;
+        System.out.println("file name is "+ RESPONSE_TEMPLATE_PATH +"-"+ temp.replace('/','-')+".vm");
+            System.out.println("File does not exist");
+            String url = uriInfo.getAbsolutePath().toString()
+                    + "?username=BLAdmin&password=bladelogic&authType=SRP&role=BLAdmins&version=8.2";
+            System.out.println(url);
+            String bsaURL = UriBuilder.fromUri(uriInfo.getAbsolutePath()).port(10843).scheme("https").host("10.1.32.49").toString() + QUERY_PARAM;
+            System.out.println(bsaURL);
+            HttpRequestBase base = new HttpGet(bsaURL);
+            HttpClient client = getClient(new DefaultHttpClient());
+            base.addHeader("Accept", "text/xml");
+            response = client.execute(base);
+            System.out.println(temp);
+            Response browser_response=Response.ok(response.getEntity().getContent(),MediaType.TEXT_XML).build();
+            return  browser_response;
+    }
     @GET
     @Path("services/LoginService")
     @Produces("text/xml")
@@ -972,63 +1001,7 @@ public class PrimaryResource {
 //        ResponseGenerator generator = new ResponseGeneratorImpl();
 //        return generator.generate(RESPONSE_TEMPLATE_PATH,"-id-SystemObject-Job-Virtual+Guest+Job-guid-Statuses-Status3251");
 //    }
-    @GET
-    @Path("/{default : .*}")
-    @Produces("text/xml")
-    public Response restDefaultPath() throws IOException
-    {
-        logger.debug(uriInfo.getAbsolutePath());
 
-        System.out.println(uriInfo.getAbsolutePath());
-        System.out.println("defaultPath()");
-        String temp=uriInfo.getPath().toString();
-        File responsefile;
-        HttpResponse response;
-
-        File currfile=new File(RESPONSE_TEMPLATE_PATH+"error.vm");
-        if(currfile.exists())
-        {
-            System.out.println("Error Response file exist");
-            ResponseGenerator generator = new ResponseGeneratorImpl();
-            return generator.generate(REST_RESPONSE_PATH,"error");
-        }
-        else
-        {
-            System.out.println("Error Response file Does not exist");
-            return null;
-        }
-
-//
-//        System.out.println("file name is "+ RESPONSE_TEMPLATE_PATH +"-"+ temp.replace('/','-')+".vm");
-//        if(!currfile.exists()) {
-//            System.out.println("File does not exist");
-//            String url = uriInfo.getAbsolutePath().toString()
-//                    + "?username=BLAdmin&password=bladelogic&authType=SRP&role=BLAdmins&version=8.2";
-//            System.out.println(url);
-//            String bsaURL = UriBuilder.fromUri(uriInfo.getAbsolutePath()).port(10843).scheme("https").host("10.1.32.49").toString() + QUERY_PARAM;
-//            System.out.println(bsaURL);
-//            HttpRequestBase base = new HttpGet(bsaURL);
-//            HttpClient client = getClient(new DefaultHttpClient());
-//            base.addHeader("Accept", "text/xml");
-//            response = client.execute(base);
-//            System.out.println(temp);
-//
-//            BufferedWriter writer = new BufferedWriter(new FileWriter(currfile));
-//        //    writer.write(response,0,response.length());
-//            writer.close();
-//
-//            Response browser_response=Response.ok(response.getEntity().getContent(),MediaType.TEXT_XML).build();
-//            return  browser_response;
-//        }
-//        else
-//        {
-//        //    responsefile=new File("C:\\Users\\Public\\Response\\Ideal-responses\\" + temp.replace('/','-')+".xml");
-//            System.out.println("------------File Exist ------------------\n"+REST_RESPONSE_PATH +"-"+ temp.replace('/','-')+".vm");
-//            ResponseGenerator generator = new ResponseGeneratorImpl();
-//            return generator.generate(REST_RESPONSE_PATH,"-"+temp.replace('/','-'));
-//        }
-
-    }
 
     private HttpClient getClient(HttpClient base) {
         HttpClient client = null;

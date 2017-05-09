@@ -1,0 +1,1 @@
+<?xml version='1.0' encoding='UTF-8'?><RESTXMLResponse><ErrorResponse><Error>Resource not found. Invalid URI: com.bladelogic.om.infra.model.asset.InvalidAssetTypeException: Cannot collect assets of type 'VMware vCenter Server.Cloud Virtual Machines' on host '54.238.196.57'</Error></ErrorResponse></RESTXMLResponse>

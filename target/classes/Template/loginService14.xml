@@ -1,0 +1,62 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Body>
+      <ns2:loginUsingUserCredentialResponse xmlns:ns2="http://bladelogic.com/webservices/skeleton/login">
+         <ns2:return>
+            <ns1:authType xmlns:ns1="http://bladelogic.com/webservices/framework/xsd">SRP</ns1:authType>
+            <authorizedRoles xmlns="http://bladelogic.com/webservices/framework/xsd">
+               <id>1000010</id>
+               <name>BLAdmins</name>
+            </authorizedRoles>
+            <ns1:clientAddress xmlns:ns1="http://bladelogic.com/webservices/framework/xsd">10.1.32.49</ns1:clientAddress>
+            <ns1:expirationTime xmlns:ns1="http://bladelogic.com/webservices/framework/xsd">2017-03-27T09:42:34.104-12:00</ns1:expirationTime>
+            <ns1:maximumLifeTime xmlns:ns1="http://bladelogic.com/webservices/framework/xsd">2018-03-27T09:42:34.104-12:00</ns1:maximumLifeTime>
+            <ns1:rolePreference xsi:nil="1" xmlns:ns1="http://bladelogic.com/webservices/framework/xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+            <ns1:serviceTicketString xmlns:ns1="http://bladelogic.com/webservices/framework/xsd">MIAGCSqGSIb3DQEHAqCAMIACAQExCzAJBgUrDgMCGgUAMIAGCSqGSIb3DQEHAaCAJIAEggODPFNl
+cnZpY2VUaWNrZXRDb250ZW50PgogIDxJc3N1aW5nQXV0aFN2Y1VSTD5zZXJ2aWNlOmF1dGhzdmMu
+YmxhZGVsb2dpYzpibGF1dGg6Ly9yb3NoYW5WTS0yOjEwODQwPC9Jc3N1aW5nQXV0aFN2Y1VSTD4K
+ICA8ZW1wbG95ZWRBdXRoVHlwZT5TUlA8L2VtcGxveWVkQXV0aFR5cGU+CiAgPHNpdGUvPgogIDx1
+c2VybmFtZT5CTEFkbWluPC91c2VybmFtZT4KICA8Y2xpZW50QWRkcmVzcz4xMC4xLjMyLjQ5PC9j
+bGllbnRBZGRyZXNzPgogIDxkZXN0aW5hdGlvblNlcnZpY2VVUkxzPgogICAgPHNlcnZpY2VVUkw+
+c2VydmljZTphcHBzdmMuYmxhZGVsb2dpYzpibHNlc3M6Ly9yb3NoYW5WTS0yOjEwODQxPC9zZXJ2
+aWNlVVJMPgogICAgPHNlcnZpY2VVUkw+c2VydmljZTphcHBzdmMuYmxhZGVsb2dpYzpibHNlc3M6
+Ly8xMC4xLjMyLjQ5OjEwODQxPC9zZXJ2aWNlVVJMPgogIDwvZGVzdGluYXRpb25TZXJ2aWNlVVJM
+cz4KICA8YXV0aG9yaXplZFJvbGVzPgogICAgPHJvbGU+CiAgICAgIDxpZD4xMDAwMDEwPC9pZD4K
+ICAgICAgPG5hbWU+QkxBZG1pbnM8L25hbWU+CiAgICA8L3JvbGU+CiAgPC9hdXRob3JpemVkUm9s
+ZXM+CiAgPGV4cGlyYXRpb25UaW1lPjIwMTctMDEtMjAgMDY6NTY6MTYuOTM1IEdNVC0xMjowMDwv
+ZXhwaXJhdGlvblRpbWU+CiAgPG1heGltdW1MaWZldGltZT4yMDE3LTAxLTIwIDA2OjU2OjE2Ljkz
+NSBHTVQtMTI6MDA8L21heGltdW1MaWZldGltZT4KICA8dXBkYXRlU1JQUGFzc3dvcmRPbmx5PmZh
+bHNlPC91cGRhdGVTUlBQYXNzd29yZE9ubHk+CiAgPGF0cml1bVNzb1Rva2VuSWQ+VlFNWExBUEJL
+QUJRTFpQTk9NRU1YRUxQVUVRRVBXVFdVV1RVQk1QVlVVS1RXWEtYUE5YT05CVE9FT0JaQU5CWjwv
+YXRyaXVtU3NvVG9rZW5JZD4KPC9TZXJ2aWNlVGlja2V0Q29udGVudD4AAAAAAACggDCCArIwggGa
+oAMCAQICBgFRJktNOTANBgkqhkiG9w0BAQUFADAaMRgwFgYDVQQDEw9WVy1BVVMtQ0xNLVFBMzQw
+HhcNMTUxMTE5MTkwNzI3WhcNMTgxMTE5MTkwNzI3WjAaMRgwFgYDVQQDEw9WVy1BVVMtQ0xNLVFB
+MzQwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCOgjbJpEJP3i0laSESwLrFKEdILFXW
+ofCSUlh3GWv2ue94uxr8GElNFgBwn+ElB3QXqrkgQnMIvF2S+udIyzWSpFIFWPOVlsz+XzGnK1Na
+nF76XyfiKsxKqCeSZKjx1NgRr59X3JXOWPIMsxEc8p0DIB4iY8J1Y3W6KaV40fYaKqZs1579fNEu
+/iUaDeNK+GTtQUKLQLctd1DPKuGCW8MVaIoOTBjyfv6BsXr7TtTglvx1FRxlJQepHYOU2Tcpwsfr
+kpLKCHgPaT5pSG1AObvvPp+5MPrLvevw2aEue6RvgG9yeEiCVvPdvtdA69m6O2CDc+hSQUKtqdgf
+7zIaldoRAgMBAAEwDQYJKoZIhvcNAQEFBQADggEBAGnfpOFKwy6RxaFxEMITQUnBfIXeG36gFdXt
+oNf3BhNddSXUIrB7PrjPCwk8G6YXbqWwi57Te82WWxQlWQWo7KYFZZEyMvgbj2bW7tSCNFs2YE8K
+VyM0RMxYHbutIOWo91nMjxSjG9pTgz93ZVhhDNZ8wdndveHmZz2bFvTd3wcmOBhLRvf7y8M9X4mW
+ciGTbOdN8+ZWJ1ZNVLRgV/C4k9Qt7+P4D7pJtC+9BRaDyn5yuv5GL2rgTZJcFZGlCEccRp7m3NkJ
+rkWn57A7DXO5Z3wHGQrn7byT3fSKPHlZykhfnzKXkYEBln79s1JiT2lszIOiNYimThH1rAt4vVCU
+b3UAADGCAaowggGmAgEBMCQwGjEYMBYGA1UEAxMPVlctQVVTLUNMTS1RQTM0AgYBUSZLTTkwCQYF
+Kw4DAhoFAKBdMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTE3MDEy
+MDA4NTYxN1owIwYJKoZIhvcNAQkEMRYEFOKboxvgbDgw+ApFS8xSV14ywOybMA0GCSqGSIb3DQEB
+AQUABIIBAERUSvrQtV0cAzPVnAeNHL/fpWLOx4CRrGhGsygxDeX2/hLFwFWYSdvIx5krcTsLqYyu
+YTR9iGYXubW8LBZ1GRtMra4v2JHbV4legdkj8LY8NABgPL+5FREYCvHft5v7KR55bvSKz44ZEE8X
+TYFY0QB3MwPR4eTNKOjqE+EO76EY7ycuya/e41+IjTfCc8l3R1wyopUflAqpTO5kOVt8hrkVNHzo
+A/vHshyOqFFdm2FIDBJqlw3UfZVVqPJ/UdWFM3YNO8mcYkotAjE9zxSpga/v+F13P09VZE81HrxM
+uKcEPvzqeMyX+mZgYtcEQIslG2DiOQLtmpWCGlHRjC5IOa8AAAAAAAA=</ns1:serviceTicketString>
+            <ns1:serviceUrl xmlns:ns1="http://bladelogic.com/webservices/framework/xsd">service:authsvc.bladelogic:blauth://roshanVM-2:10840</ns1:serviceUrl>
+            <ns1:serviceUrls xmlns:ns1="http://bladelogic.com/webservices/framework/xsd">service:appsvc.bladelogic:blsess://roshanVM-2:10841</ns1:serviceUrls>
+            <ns1:serviceUrls xmlns:ns1="http://bladelogic.com/webservices/framework/xsd">service:appsvc.bladelogic:blsess://10.1.32.49:10841</ns1:serviceUrls>
+            <ns1:site xmlns:ns1="http://bladelogic.com/webservices/framework/xsd"/>
+            <ns1:updateSRPPasswordOnly xmlns:ns1="http://bladelogic.com/webservices/framework/xsd">false</ns1:updateSRPPasswordOnly>
+            <ns1:userName xmlns:ns1="http://bladelogic.com/webservices/framework/xsd">BLAdmin</ns1:userName>
+            <ns1:webServicesUrls xsi:nil="1" xmlns:ns1="http://bladelogic.com/webservices/framework/xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+         </ns2:return>
+         <ns2:returnSessionId>urn:uuid:B3D1C50AC6A89C47271491035700717</ns2:returnSessionId>
+      </ns2:loginUsingUserCredentialResponse>
+   </soapenv:Body>
+</soapenv:Envelope>

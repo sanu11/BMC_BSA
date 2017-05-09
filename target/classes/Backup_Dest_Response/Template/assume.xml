@@ -1,0 +1,7 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+   <soapenv:Body>
+      <ns2:assumeRoleResponse xmlns:ns2="http://bladelogic.com/webservices/skeleton/assumerole">
+         <ns2:return>BLAdmins</ns2:return>
+      </ns2:assumeRoleResponse>
+   </soapenv:Body>
+</soapenv:Envelope> 
