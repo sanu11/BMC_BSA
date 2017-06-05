@@ -77,14 +77,13 @@ public class RecordMode {
         HttpClient client=getClient(new DefaultHttpClient());
         HttpResponse response=client.execute(httpRequestBase);
 
-        //byte data[]=toByteArray(response.getEntity().getContent());
+        byte data[]=toByteArray(response.getEntity().getContent());
         //Write the response to file.
-        //saveResponse(data,uriInfo.getPath());
+        saveResponse(data,uriInfo.getPath());
 
-        //InputStream stream=new ByteArrayInputStream(data);
         //Return the response to CLM.
-        Response bsaResponse=Response.ok(response.getEntity().getContent(),MediaType.TEXT_XML).build();
 
+        Response bsaResponse=constructResponse(uriInfo.getPath());
         return bsaResponse;
     }
 
@@ -106,13 +105,13 @@ public class RecordMode {
         HttpClient client=getClient(new DefaultHttpClient());
         HttpResponse response=client.execute(httpRequestBase);
 
-       // byte data[]=toByteArray(response.getEntity().getContent());
+        byte data[]=toByteArray(response.getEntity().getContent());
         //Write the response to file.
-        //saveResponse(data,uriInfo.getPath());
+        saveResponse(data,uriInfo.getPath());
 
-        //InputStream stream=new ByteArrayInputStream(data);
         //Return the response to CLM.
-        Response bsaResponse=Response.ok(response.getEntity().getContent(),MediaType.TEXT_XML).build();
+
+        Response bsaResponse=constructResponse(uriInfo.getPath());
 
         return bsaResponse;
     }
@@ -133,14 +132,13 @@ public class RecordMode {
         //create a https client.
         HttpClient client=getClient(new DefaultHttpClient());
         HttpResponse response=client.execute(httpRequestBase);
-
-        //byte data[]=toByteArray(response.getEntity().getContent());
+        byte data[]=toByteArray(response.getEntity().getContent());
         //Write the response to file.
-        //saveResponse(data,uriInfo.getPath());
+        saveResponse(data,uriInfo.getPath());
 
-        //InputStream stream=new ByteArrayInputStream(data);
         //Return the response to CLM.
-        Response bsaResponse=Response.ok(response.getEntity().getContent(),MediaType.TEXT_XML).build();
+
+        Response bsaResponse=constructResponse(uriInfo.getPath());
 
         return bsaResponse;
     }
@@ -192,7 +190,6 @@ public class RecordMode {
     private Response constructResponse(String filename) throws IOException {
         Document document=null;
         filename=filename.replace('/','-');
-        System.out.println(filename);
         DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
         try {
             DocumentBuilder builder=factory.newDocumentBuilder();
@@ -225,11 +222,6 @@ public class RecordMode {
         HttpPost post=new HttpPost(url);
         post.setEntity(new InputStreamEntity(stream));
         HttpResponse response=client.execute(post);
-
-       // byte data[]=toByteArray(response.getEntity().getContent());
-
-        //InputStream responseStream=new ByteArrayInputStream(data);
-        //Return the response to CLM.
         Response bsaResponse=Response.ok(response.getEntity().getContent(),MediaType.TEXT_XML).build();
         return bsaResponse;
     }
@@ -246,10 +238,7 @@ public class RecordMode {
         post.setEntity(new InputStreamEntity(stream));
         HttpResponse response=client.execute(post);
 
-        //byte data[]=toByteArray(response.getEntity().getContent());
 
-        //InputStream responseStream=new ByteArrayInputStream(data);
-        //Return the response to CLM.
         Response bsaResponse=Response.ok(response.getEntity().getContent(),MediaType.TEXT_XML).build();
 
         return bsaResponse;
@@ -266,21 +255,22 @@ public class RecordMode {
         byte[] temp=toByteArray(stream);
 
         InputStream stream1=new ByteArrayInputStream(temp);
-        String CommandName=getCommandName(stream1);
+        String commandName=getCommandName(stream1);
 
         InputStream stream2=new ByteArrayInputStream(temp);
         HttpPost post=new HttpPost(url);
         post.setEntity(new InputStreamEntity(stream2));
         HttpResponse response=client.execute(post);
-
-        //byte data[]=toByteArray(response.getEntity().getContent());
+        byte data[]=toByteArray(response.getEntity().getContent());
         //Write the response to file.
-        //saveResponse(data,CommandName);
+        saveResponse(data,commandName);
 
-        //InputStream Responsestream=new ByteArrayInputStream(data);
         //Return the response to CLM.
-        Response bsaResponse=Response.ok(response.getEntity().getContent(),MediaType.TEXT_XML).build();
 
+        ByteArrayInputStream inputStream=new ByteArrayInputStream(data);
+
+        //Response bsaResponse=constructResponse(commandName);
+        Response bsaResponse=Response.ok(inputStream,MediaType.TEXT_XML).build();
         return bsaResponse;
     }
 
